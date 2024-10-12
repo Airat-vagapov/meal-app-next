@@ -8,12 +8,19 @@ import Input from "@/ui/Input/Input";
 import { useGetMealsByNameMutation } from '@/services/mealApi'
 
 import styles from './SearchForm.module.sass';
+import classNames from "classnames";
 
 interface FormValues {
     search: string;
 }
 
-const SearchForm = () => {
+interface ISearchForm {
+    toUp: boolean
+    setMealData: (value: any) => void,
+    setIsDataReady: (value: boolean) => void
+}
+
+const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady }) => {
     // Refs
     const searchInputRef = useRef<HTMLInputElement | null>(null)
 
@@ -26,12 +33,10 @@ const SearchForm = () => {
             search: '',
         },
         onSubmit: (values) => {
-            console.log('SUBMIT')
-            console.log(values)
-
             var res = getMealsByName(values.search)
             res.then(({ data }) => {
-                console.log(data.meals)
+                setMealData(data.meals)
+                setIsDataReady(true)
             })
         }
     })
@@ -43,23 +48,31 @@ const SearchForm = () => {
         if (value && value?.length > 2) {
             formik.handleSubmit()
         }
+
+        if (value && value?.length === 0) {
+            // formik.handleSubmit()
+            setMealData([])
+            setIsDataReady(false)
+        }
     }
 
     return (
-        <div className={styles.searchFromBlock}>
-            <form className={styles.searchForm} onSubmit={searchForm.handleSubmit}>
-                <Input
-                    ref={searchInputRef}
-                    name="search"
-                    id="search"
-                    placeholder="Enter meal name"
-                    onChange={(e) => {
-                        changeHandler(e, searchForm)
-                    }
-                    }
-                    value={searchForm.values.search} />
-            </form>
-        </div>
+        <form className={classNames(styles.searchForm,
+            { [styles['searchForm--toUp']]: toUp },
+        )
+        } onSubmit={searchForm.handleSubmit} >
+            <Input
+                ref={searchInputRef}
+                name="search"
+                id="search"
+                placeholder="Enter meal name"
+                onChange={(e) => {
+                    changeHandler(e, searchForm)
+                }
+                }
+                value={searchForm.values.search} />
+        </form >
+
     )
 }
 

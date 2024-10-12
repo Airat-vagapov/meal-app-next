@@ -1,16 +1,37 @@
-.searchFromBlock
+
+@import '/src/styles/vars.sass'
+.searchFormBlock
     display: flex
+    flex-direction: column
     height: calc( 100vh - 72px )
     margin-top: auto
 
     .searchForm
         display: flex
         width: 100%
-        margin-top: auto
-        margin-bottom: auto
+        // margin-top: auto
+        // margin-bottom: auto
+        transition: all .3s ease-in
+        &--toUp
+            margin-top: 0
+            margin-bottom: 0
+            transition: all .3s ease-in
 
     input
         width: 100%
         padding: 20px 24px
         font-size: 32px
         line-height: 40px
+
+.searchList
+    background: $base-white
+    display: flex
+    flex-direction: column
+    gap: 12px
+    margin-top: 10px
+    padding: 20px
+    border-radius: 12px
+    > div
+        border-bottom: 1px solid $orange
+        &:last-child
+            border: none
