@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { FormikProps, useFormik } from "formik";
 
 import Input from "@/ui/Input/Input";
-import Container from "@/components/Container/Container";
+
+import { useGetMealsByNameMutation } from '@/services/mealApi'
 
 import styles from './SearchForm.module.sass';
 
@@ -13,7 +14,13 @@ interface FormValues {
 }
 
 const SearchForm = () => {
+    // Refs
     const searchInputRef = useRef<HTMLInputElement | null>(null)
+
+    // API
+    const [getMealsByName] = useGetMealsByNameMutation()
+
+    // Formik
     const searchForm = useFormik({
         initialValues: {
             search: '',
@@ -21,6 +28,11 @@ const SearchForm = () => {
         onSubmit: (values) => {
             console.log('SUBMIT')
             console.log(values)
+
+            var res = getMealsByName(values.search)
+            res.then(({ data }) => {
+                console.log(data.meals)
+            })
         }
     })
 
@@ -34,23 +46,20 @@ const SearchForm = () => {
     }
 
     return (
-
-        <Container>
-            <div className={styles.searchFromBlock}>
-                <form className={styles.searchForm} onSubmit={searchForm.handleSubmit}>
-                    <Input
-                        ref={searchInputRef}
-                        name="search"
-                        id="search"
-                        placeholder="Enter meal name"
-                        onChange={(e) => {
-                            changeHandler(e, searchForm)
-                        }
-                        }
-                        value={searchForm.values.search} />
-                </form>
-            </div>
-        </Container>
+        <div className={styles.searchFromBlock}>
+            <form className={styles.searchForm} onSubmit={searchForm.handleSubmit}>
+                <Input
+                    ref={searchInputRef}
+                    name="search"
+                    id="search"
+                    placeholder="Enter meal name"
+                    onChange={(e) => {
+                        changeHandler(e, searchForm)
+                    }
+                    }
+                    value={searchForm.values.search} />
+            </form>
+        </div>
     )
 }
 

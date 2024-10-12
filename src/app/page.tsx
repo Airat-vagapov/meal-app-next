@@ -1,10 +1,14 @@
-import Container from "@/components/Container/Container";
-import SearchForm from "@/components/SearchForm/SearchForm";
+'use client'
+
+import { Provider } from "react-redux";
+import { store } from '@/store/store'
+
+import SearchBlock from "@/components/SearchBlock/SearchBlock";
 
 export default function Home() {
   return (
-    // <Container>
-      <SearchForm />
-    // </Container>
+    <Provider store={store}>
+      <SearchBlock />
+    </Provider>
   );
 }
