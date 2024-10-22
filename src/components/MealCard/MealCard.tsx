@@ -26,7 +26,7 @@ const MealCard: React.FC<IMealCard> = ({ key, meal }) => {
                         <TagGroup data={dataArr} />
                     </div>
 
-                    <TextLink />
+                    <TextLink text="Show more" />
                 </div>
             }
         </>
