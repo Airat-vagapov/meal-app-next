@@ -3,6 +3,8 @@ import TextLink from '@/UI/TextLink/TextLink'
 
 import styles from './MealCard.module.sass'
 import TagGroup from '@/components/TagGroup/TagGroup'
+
+
 interface IMealCard {
     meal: any
     key?: string | number

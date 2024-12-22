@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const mealApi = createApi({
-    reducerPath: 'mealApi',
+const mealSearchApi = createApi({
+    reducerPath: 'mealSearchApi',
     baseQuery: fetchBaseQuery({
         baseUrl: "https://api.spoonacular.com/recipes/complexSearch/",
     }),
@@ -13,5 +13,20 @@ const mealApi = createApi({
 
 })
 
-export const {useGetMealsByNameMutation} = mealApi
-export default mealApi;
+const mealApi = createApi({
+    reducerPath: 'mealApi',
+    baseQuery: fetchBaseQuery({
+        baseUrl: "https://api.spoonacular.com/recipes/",
+    }),
+    endpoints: (build) => ({
+        getMealById: build.query<any, string>({
+            query: (id) => `${id}/information/?apiKey=dbd53329fdd54f889424c42c0e88987f&addTasteData=true&addWinePairing=true`,
+            keepUnusedDataFor: 360000,
+        })
+    }),
+})
+
+export const {useGetMealsByNameMutation} = mealSearchApi
+export const {useGetMealByIdQuery} = mealApi
+export const {getMealById} = mealApi.endpoints
+export {mealSearchApi, mealApi};

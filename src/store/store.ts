@@ -1,13 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import mealApi from '@/services/mealApi'
+import {mealApi, mealSearchApi} from '@/services/mealApi'
 
 export const store = configureStore({
     reducer: {
         [mealApi.reducerPath]: mealApi.reducer,
+        [mealSearchApi.reducerPath]: mealSearchApi.reducer,
     },
 
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(mealApi.middleware),
+    getDefaultMiddleware().concat(mealApi.middleware, mealSearchApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

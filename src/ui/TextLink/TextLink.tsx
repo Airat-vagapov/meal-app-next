@@ -10,7 +10,6 @@ interface ITextLink {
 }
 
 const TextLink: React.FC<ITextLink> = ({ text, size, link }) => {
-    console.log(link)
     return (
         <>
             <Link
