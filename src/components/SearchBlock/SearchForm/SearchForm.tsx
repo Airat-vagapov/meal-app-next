@@ -34,8 +34,11 @@ const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady }
         },
         onSubmit: (values) => {
             var res = getMealsByName(values.search)
+            console.log(res)
+
             res.then(({ data }) => {
-                setMealData(data.meals)
+                console.log(data)
+                setMealData(data?.results)
                 setIsDataReady(true)
             })
         }

@@ -1,18 +1,29 @@
 import Link from "next/link";
 
 import styles from "./TextLink.module.sass";
+import classNames from "classnames";
 
 interface ITextLink {
     text: string;
+    size: number;
+    link: string;
 }
 
-const TextLink = ({ text }) => {
+const TextLink: React.FC<ITextLink> = ({ text, size, link }) => {
+    console.log(link)
     return (
         <>
-            <Link href="/" legacyBehavior>
-                <a href="" className={styles.link}>
-                    {text}
-                </a>
+            <Link
+                href={link}
+                className={classNames(
+                    styles.link,
+                    {
+                        [styles[`link${size}`]]: size > 0,
+                    },
+                )}
+                replace
+            >
+                {text}
             </Link>
         </>
     );

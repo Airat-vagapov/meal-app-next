@@ -19,14 +19,17 @@ const MealCard: React.FC<IMealCard> = ({ key, meal }) => {
             {meal &&
                 <div key={key} className={styles.mealCard}>
 
-                    <Image src={meal?.strMealThumb} width={120} height={120} alt={meal?.strMeal} />
+                    <img src={meal?.image} alt="{meal?.title}" />
+                    {/* <Image src={meal?.image} width={120} height={120} alt={meal?.title} /> */}
 
                     <div className={styles.mealCardContent}>
-                        <p className={styles.mealTitle}>{meal?.strMeal}</p>
+                        <p className={styles.mealTitle}>{meal?.title}</p>
                         <TagGroup data={dataArr} />
                     </div>
 
-                    <TextLink text="Show more" />
+                    <div className={styles.mealLink}>
+                        <TextLink size={16} text="Show more" link={`/meals/${meal?.id}`} />
+                    </div>
                 </div>
             }
         </>
