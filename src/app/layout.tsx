@@ -14,7 +14,7 @@ const mulish = Mulish({
 
 export const metadata: Metadata = {
   title: "Meal App",
-  description: "Recipes finder",
+  description: "Recipes finder service",
 };
 
 export default function RootLayout({

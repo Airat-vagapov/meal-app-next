@@ -7,7 +7,6 @@ import { store } from "@/store/store";
 
 import Meal from "@/components/Meal/Meal";
 import Container from "@/components/Container/Container";
-import MealTitle from "@/components/Meal/MealTitle/MealTitle";
 import { Provider } from "react-redux";
 
 

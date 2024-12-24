@@ -1,22 +1,18 @@
 'use client'
-import { store } from "@/store/store";
+import { useGetMealByIdQuery } from "@/services/mealApi";
 
-import { useSelector } from "react-redux";
-import { mealApi, getMealById, useGetMealByIdQuery } from "@/services/mealApi";
 import PageTitle from "@/UI/PageTitle/PageTitle";
+import MealMainBlock from "@/components/Meal/MealMainBlock/MealMainBlock"
 
 
 const Meal = ({ id }: { id: string }) => {
+    // API
     const { data, isFetching, isLoading } = useGetMealByIdQuery(id)
 
-    // const response = await store.dispatch(getMealById.initiate(id));
-    // const meal = useSelector(mealApi.endpoints.getMealById.select(id));
-    // const data = response.data
-
-    console.log(data);
     return (
         <div>
             <PageTitle title={data?.title} desc={data?.summary}></PageTitle>
+            <MealMainBlock />
         </div>
     )
 }
