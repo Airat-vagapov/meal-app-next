@@ -16,7 +16,7 @@ const Meal = ({ id }: { id: string }) => {
     console.log(data);
     return (
         <div>
-            <PageTitle>{data.title}</PageTitle>
+            <PageTitle title={data?.title} desc={data?.summary}></PageTitle>
         </div>
     )
 }

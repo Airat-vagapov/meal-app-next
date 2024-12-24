@@ -1,4 +1,17 @@
+@import '/src/styles/vars.sass'
+@import '/src/styles/mixins.sass'
+
 .title
     font-size: 40px
     line-height: 64px
     font-weight: 600
+    margin-bottom: 24px
+
+.desc
+    width: 80%
+    b
+        font-weight: 700
+    a
+        color: $orange
+        &:hover
+            @include orangeTextHover

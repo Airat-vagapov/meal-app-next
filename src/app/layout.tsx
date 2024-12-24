@@ -2,9 +2,9 @@
 import type { Metadata } from "next";
 
 import Header from "@/components/Header/Header";
+import Content from "@/UI/Content/Content";
 
 import { Mulish } from 'next/font/google'
-
 import "@/styles/global.sass";
 
 const mulish = Mulish({
@@ -26,7 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={mulish.className}>
         <Header />
-        {children}
+        <Content>
+          {children}
+        </Content>
+
       </body>
     </html>
   );
