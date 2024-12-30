@@ -19,6 +19,12 @@ const Meal = ({ id }: { id: string }) => {
                 <MealImageCard src={data?.image} />
                 <MealInfoCard
                     healthScore={data?.healthScore}
+                    readyInMinutes={data?.readyInMinutes}
+                    vegan={data?.vegan}
+                    veryHealthy={data?.veryHealthy}
+                    veryPopular={data?.veryPopular}
+                    spoonacularScore={data?.spoonacularScore}
+
                 />
             </div>
             {/* <MealMainBlock image={data?.image} /> */}

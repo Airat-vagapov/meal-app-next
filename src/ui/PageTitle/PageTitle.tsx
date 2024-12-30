@@ -21,7 +21,6 @@ const HtmlRenderer: React.FC<{ content: string }> = ({ content }) => {
 }
 
 const PageTitle: React.FC<PageTitleProps> = ({ title, desc }) => {
-    console.log(desc)
     return (
         <div>
             <h1 className={styles.title}>{title}</h1>
