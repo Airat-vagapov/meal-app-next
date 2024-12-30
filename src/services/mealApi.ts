@@ -18,10 +18,12 @@ const mealApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: "https://api.spoonacular.com/recipes/",
     }),
+    tagTypes: ['meal'],
     endpoints: (build) => ({
         getMealById: build.query<any, string>({
             query: (id) => `${id}/information/?apiKey=dbd53329fdd54f889424c42c0e88987f&addTasteData=true&addWinePairing=true`,
             keepUnusedDataFor: 360000,
+            providesTags: ['meal']
         })
     }),
 })
