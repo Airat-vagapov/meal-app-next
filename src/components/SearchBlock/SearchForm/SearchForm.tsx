@@ -18,38 +18,59 @@ interface ISearchForm {
     toUp: boolean
     setMealData: (value: any) => void,
     setIsDataReady: (value: boolean) => void
-    setIsFetchError: (value: boolean) => void
+    setIsFetchError: (value: boolean) => void,
+    setFetchErrorData: (value: any) => void
 }
 
-const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady, setIsFetchError }) => {
+const SearchForm: React.FC<ISearchForm> = ({
+    toUp,
+    setMealData,
+    setIsDataReady,
+    setIsFetchError,
+    setFetchErrorData
+}) => {
     // Refs
     const searchInputRef = useRef<HTMLInputElement | null>(null)
 
     // API
-    const [getMealsByName, { isLoading, isError }] = useGetMealsByNameMutation()
+    const [getMealsByName, { isLoading, isError, error }] = useGetMealsByNameMutation()
 
     // Formik
     const searchForm = useFormik({
         initialValues: {
             search: '',
         },
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             setIsFetchError(false)
-            var res = getMealsByName(values.search)
-            console.log(res)
 
-            if (isError) {
-                console.log(isError)
-                setIsFetchError(true)
-                return
-            }
-
-            res.then(({ data }) => {
-                console.log(data)
+            try {
+                const data = await getMealsByName(values.search).unwrap()
                 setMealData(data?.results)
                 setIsDataReady(true)
                 setIsFetchError(false)
-            })
+
+            } catch (err) {
+                        console.error(err)
+                        setIsFetchError(isError)
+                        setFetchErrorData(error)
+            }
+
+            // const res = getMealsByName(values.search)
+
+            // const data1 = res.unwrap()
+            // console.log(data1)
+
+            // res.then(({ data }) => {
+            //         console.log(data)
+            //         setMealData(data?.results)
+            //         setIsDataReady(true)
+            //         setIsFetchError(false)
+            //     })
+            //     .catch((err) => {
+            //         console.error(err)
+            //         setIsFetchError(isError)
+            //         setFetchErrorData(error)
+            //     })
         }
     })
 
