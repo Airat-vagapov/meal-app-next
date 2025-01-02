@@ -18,14 +18,15 @@ interface ISearchForm {
     toUp: boolean
     setMealData: (value: any) => void,
     setIsDataReady: (value: boolean) => void
+    setIsFetchError: (value: boolean) => void
 }
 
-const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady }) => {
+const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady, setIsFetchError }) => {
     // Refs
     const searchInputRef = useRef<HTMLInputElement | null>(null)
 
     // API
-    const [getMealsByName] = useGetMealsByNameMutation()
+    const [getMealsByName, { isLoading, isError }] = useGetMealsByNameMutation()
 
     // Formik
     const searchForm = useFormik({
@@ -33,13 +34,21 @@ const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady }
             search: '',
         },
         onSubmit: (values) => {
+            setIsFetchError(false)
             var res = getMealsByName(values.search)
             console.log(res)
+
+            if (isError) {
+                console.log(isError)
+                setIsFetchError(true)
+                return
+            }
 
             res.then(({ data }) => {
                 console.log(data)
                 setMealData(data?.results)
                 setIsDataReady(true)
+                setIsFetchError(false)
             })
         }
     })
@@ -52,6 +61,8 @@ const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady }
             formik.handleSubmit()
         }
 
+        if (value && value?.length < 3) { setIsFetchError(false) }
+
         if (value && value?.length === 0) {
             // formik.handleSubmit()
             setMealData([])
@@ -59,7 +70,9 @@ const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady }
         }
     }
 
+
     return (
+
         <form className={classNames(styles.searchForm,
             { [styles['searchForm--toUp']]: toUp },
         )
@@ -74,7 +87,8 @@ const SearchForm: React.FC<ISearchForm> = ({ toUp, setMealData, setIsDataReady }
                 }
                 }
                 value={searchForm.values.search} />
-        </form >
+        </form>
+
 
     )
 }

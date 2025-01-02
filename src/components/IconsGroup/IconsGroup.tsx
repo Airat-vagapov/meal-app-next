@@ -11,17 +11,18 @@ interface IIconsGroup {
 const IconsGroup: React.FC<IIconsGroup> = ({ data }) => {
     return (
         <div className={styles.iconGroup}>
-            {data && data.map(({ name, value }) => {
+            {data && data.map(({ name, value, icon }) => {
                 return (
                     <>
                         <div key={name}>
-                            <p>{name}</p>
-                            <p>{value}</p>
+                            {icon && <Icon name={icon} />}
+                            {name}
+                            {value}
                         </div>
                     </>
                 )
             })}
-            {/* <Icon name={'search'}></Icon> */}
+            
         </div>
     )
 

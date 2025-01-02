@@ -33,6 +33,7 @@ const MealInfoCard = (
     readyInMinutes && infoData.push({
         'name': 'Ready in',
         'value': readyInMinutes,
+        'icon': 'timer',
     })
     vegan && infoData.push({
         'name': 'Vegan',

@@ -6,6 +6,7 @@ import Content from "@/UI/Content/Content";
 
 import { Mulish } from 'next/font/google'
 import "@/styles/global.sass";
+import Head from "next/head";
 
 const mulish = Mulish({
   subsets: ['latin', 'cyrillic'],
@@ -24,7 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+      <Head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=optional" rel="stylesheet" />
+      </Head>
+      {/* <head>
+      </head> */}
       <body className={mulish.className}>
         <Header />
         <Content>
