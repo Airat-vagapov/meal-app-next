@@ -22,7 +22,7 @@ const IconsGroup: React.FC<IIconsGroup> = ({ data }) => {
                         }
 
                         {!type &&
-                            <div key={index}>
+                            <div className={styles.content} key={index}>
                                 {icon && <Icon name={icon} />}
                                 {name}
                                 {value}

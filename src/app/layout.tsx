@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
 
       <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
       </head>
       <body className={mulish.className}>
         <Header />

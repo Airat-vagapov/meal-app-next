@@ -5,7 +5,7 @@ type IconProps = {
 const Icon = ({ name }: IconProps) => {
     return (
         <>
-            <span className='material-symbols'>{name}</span>
+            <span className='material-symbols-outlined'>{name}</span>
         </>
     )
 }
