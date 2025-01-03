@@ -10,6 +10,7 @@ type MealInfoCardProps = {
     veryHealthy: boolean;
     veryPopular: boolean;
     spoonacularScore: number;
+    weightWatcherSmartPoints: number;
 }
 
 const MealInfoCard = (
@@ -19,22 +20,39 @@ const MealInfoCard = (
         vegan,
         veryHealthy,
         veryPopular,
-        spoonacularScore
+        spoonacularScore,
+        weightWatcherSmartPoints
     }:
         MealInfoCardProps
 ) => {
     // Create info data array
     let infoData: IMealInfoElement[] = []
 
-    healthScore && infoData.push({
+    const scoresArr: IMealInfoElement[] = []
+    healthScore && scoresArr.push({
         'name': 'Health Score',
         'value': healthScore,
+        'type': 'score'
     })
-    readyInMinutes && infoData.push({
+    spoonacularScore && scoresArr.push({
+        'name': 'Overall score',
+        'value': Math.round(spoonacularScore),
+        'type': 'score'
+    })
+    weightWatcherSmartPoints && scoresArr.push({
+        'name': 'Weight Watcher',
+        'value': weightWatcherSmartPoints,
+        'type': 'score'
+    })
+
+    const timesArr: IMealInfoElement[] = []
+    readyInMinutes && timesArr.push({
         'name': 'Ready in',
-        'value': readyInMinutes,
+        'value': `${readyInMinutes} min`,
         'icon': 'timer',
     })
+
+
     vegan && infoData.push({
         'name': 'Vegan',
         'value': vegan,
@@ -47,18 +65,12 @@ const MealInfoCard = (
         'name': 'Very popular',
         'value': veryPopular,
     })
-    spoonacularScore && infoData.push({
-        'name': 'Overall score',
-        'value': Math.round(spoonacularScore),
-    })
-
 
     return (
         <div className={styles.card}>
-            info
-            block
-            don
-            {healthScore}
+            <span className={styles.card__title}>Recipe information</span>
+            <IconsGroup data={scoresArr} />
+            <IconsGroup data={timesArr} />
             <IconsGroup data={infoData} />
         </div>
     )

@@ -50,27 +50,10 @@ const SearchForm: React.FC<ISearchForm> = ({
                 setIsFetchError(false)
 
             } catch (err) {
-                        console.error(err)
-                        setIsFetchError(isError)
-                        setFetchErrorData(error)
+                console.error(err)
+                setIsFetchError(isError)
+                setFetchErrorData(error)
             }
-
-            // const res = getMealsByName(values.search)
-
-            // const data1 = res.unwrap()
-            // console.log(data1)
-
-            // res.then(({ data }) => {
-            //         console.log(data)
-            //         setMealData(data?.results)
-            //         setIsDataReady(true)
-            //         setIsFetchError(false)
-            //     })
-            //     .catch((err) => {
-            //         console.error(err)
-            //         setIsFetchError(isError)
-            //         setFetchErrorData(error)
-            //     })
         }
     })
 
@@ -82,7 +65,7 @@ const SearchForm: React.FC<ISearchForm> = ({
             formik.handleSubmit()
         }
 
-        if (value && value?.length < 3) { setIsFetchError(false) }
+        if (value && value?.length < 2) { setIsFetchError(false) }
 
         if (value && value?.length === 0) {
             // formik.handleSubmit()
@@ -109,8 +92,6 @@ const SearchForm: React.FC<ISearchForm> = ({
                 }
                 value={searchForm.values.search} />
         </form>
-
-
     )
 }
 

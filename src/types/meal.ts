@@ -1,6 +1,7 @@
 export interface IMealInfoElement {
     name: string;
-    value: number | boolean;
+    value: string | number | boolean;
     icon?: string;
+    type?: string;
 }
 

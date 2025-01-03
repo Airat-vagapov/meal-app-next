@@ -2,7 +2,6 @@
 import { useGetMealByIdQuery } from "@/services/mealApi";
 
 import PageTitle from "@/UI/PageTitle/PageTitle";
-import MealMainBlock from "@/components/Meal/MealMainBlock/MealMainBlock"
 import MealImageCard from '@/components/Meal/MealImageCard/MealImageCard';
 import MealInfoCard from '@/components/Meal/MealInfoCard/MealInfoCard'
 
@@ -13,21 +12,23 @@ const Meal = ({ id }: { id: string }) => {
     const { data, isFetching, isLoading } = useGetMealByIdQuery(id)
 
     return (
-        <div>
+        <div className={styles.mealPage}>
             <PageTitle title={data?.title} desc={data?.summary}></PageTitle>
-            <div className={styles.meal}>
-                <MealImageCard src={data?.image} />
-                <MealInfoCard
-                    healthScore={data?.healthScore}
-                    readyInMinutes={data?.readyInMinutes}
-                    vegan={data?.vegan}
-                    veryHealthy={data?.veryHealthy}
-                    veryPopular={data?.veryPopular}
-                    spoonacularScore={data?.spoonacularScore}
+            {data &&
+                <div className={styles.meal}>
+                    {data?.image && <MealImageCard src={data?.image} />}
+                    <MealInfoCard
+                        healthScore={data?.healthScore}
+                        readyInMinutes={data?.readyInMinutes}
+                        vegan={data?.vegan}
+                        veryHealthy={data?.veryHealthy}
+                        veryPopular={data?.veryPopular}
+                        spoonacularScore={data?.spoonacularScore}
+                        weightWatcherSmartPoints={data?.weightWatcherSmartPoints}
+                    />
+                </div>
+            }
 
-                />
-            </div>
-            {/* <MealMainBlock image={data?.image} /> */}
         </div>
     )
 }

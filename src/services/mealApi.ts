@@ -7,7 +7,7 @@ const mealSearchApi = createApi({
     }),
     endpoints: (build) => ({
         getMealsByName: build.mutation<any, string>({
-            query: (value) => `?apiKey=dbd53329fdd54f889424c42c0e889871f&query=${value}&number=20`
+            query: (value) => `?apiKey=dbd53329fdd54f889424c42c0e88987f&query=${value}&number=20`
         })
     }),
 

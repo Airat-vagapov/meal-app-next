@@ -1,13 +1,11 @@
 type IconProps = {
     name: string;
-    children?: React.ReactNode
 }
 
-const Icon = ({ name, children }: IconProps) => {
+const Icon = ({ name }: IconProps) => {
     return (
         <>
-            Icon
-            <span className='material-symbols-outlined'>{name}</span>
+            <span className='material-symbols'>{name}</span>
         </>
     )
 }

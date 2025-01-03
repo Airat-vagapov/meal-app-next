@@ -16,6 +16,9 @@ const mulish = Mulish({
 export const metadata: Metadata = {
   title: "Meal App",
   description: "Recipes finder service",
+  // links: [
+  //   { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=optional' }
+  // ]
 };
 
 export default function RootLayout({
@@ -25,11 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=optional" rel="stylesheet" />
-      </Head>
-      {/* <head>
-      </head> */}
+
+      <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      </head>
       <body className={mulish.className}>
         <Header />
         <Content>
