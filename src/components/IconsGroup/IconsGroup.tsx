@@ -16,7 +16,7 @@ const IconsGroup: React.FC<IIconsGroup> = ({ data }) => {
                 return (
                     <>
                         {type &&
-                            <div>
+                            <div key={index}>
                                 <Score label={name} value={value} />
                             </div>
                         }
@@ -24,8 +24,10 @@ const IconsGroup: React.FC<IIconsGroup> = ({ data }) => {
                         {!type &&
                             <div className={styles.content} key={index}>
                                 {icon && <Icon name={icon} />}
-                                {name}
-                                {value}
+                                <div className={styles.content__inner}>
+                                    <span>{name}</span>
+                                    <span>{value}</span>
+                                </div>
                             </div>
                         }
                     </>

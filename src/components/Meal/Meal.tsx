@@ -20,11 +20,16 @@ const Meal = ({ id }: { id: string }) => {
                     <MealInfoCard
                         healthScore={data?.healthScore}
                         readyInMinutes={data?.readyInMinutes}
+                        cookingMinutes={data?.cookingMinutes}
+                        preparationMinutes={data?.preparationMinutes}
                         vegan={data?.vegan}
                         veryHealthy={data?.veryHealthy}
                         veryPopular={data?.veryPopular}
                         spoonacularScore={data?.spoonacularScore}
                         weightWatcherSmartPoints={data?.weightWatcherSmartPoints}
+                        glutenFree={data?.glutenFree}
+                        dairyFree={data?.dairyFree}
+                        cheap={data?.cheap}
                     />
                 </div>
             }
