@@ -5,3 +5,4 @@ export interface IMealInfoElement {
     type?: string;
 }
 
+

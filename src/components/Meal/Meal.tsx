@@ -6,10 +6,63 @@ import MealImageCard from '@/components/Meal/MealImageCard/MealImageCard';
 import MealInfoCard from '@/components/Meal/MealInfoCard/MealInfoCard'
 
 import styles from '@/components/Meal/MealMainBlock/MealMainBlock.module.sass'
+import TabBlock from "@/components/TabBlock/TabBlock";
+
+import { ITabData } from '@/types/global';
+
 
 const Meal = ({ id }: { id: string }) => {
     // API
     const { data, isFetching, isLoading } = useGetMealByIdQuery(id)
+
+    const tabData: ITabData[] = [];
+
+    // Ingredients
+    tabData.push({
+        'name': 'Ingredients',
+        'data': data?.extendedIngredients,
+        'type': 'table'
+    })
+
+    // Instructions
+    tabData.push({
+        'name': 'Instructions',
+        'data': [
+            {
+                'name': 'Description',
+                'data': data?.instructions
+            },
+            {
+                'name': 'Steps',
+                'data': data?.analyzedInstructions
+            }
+        ]
+    })
+
+    // General dish info
+    tabData.push({
+        'name': 'General',
+        'data': [
+            {
+                'name': 'Dish type',
+                'data': data?.dishType
+            },
+            {
+                'name': 'Diets',
+                'data': data?.diets
+            },
+            {
+                'name': 'Cuisines',
+                'data': data?.cuisines
+            },
+            {
+                'name': 'Diets',
+                'data': data?.diets
+            },
+        ]
+    })
+
+    console.log(tabData)
 
     return (
         <div className={styles.mealPage}>
@@ -33,6 +86,9 @@ const Meal = ({ id }: { id: string }) => {
                     />
                 </div>
             }
+
+            <TabBlock data={tabData} name={""} />
+
 
         </div>
     )
