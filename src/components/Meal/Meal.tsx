@@ -45,7 +45,7 @@ const Meal = ({ id }: { id: string }) => {
         'data': [
             {
                 'name': 'Dish type',
-                'data': data?.dishType
+                'data': data?.dishTypes
             },
             {
                 'name': 'Diets',
@@ -54,10 +54,6 @@ const Meal = ({ id }: { id: string }) => {
             {
                 'name': 'Cuisines',
                 'data': data?.cuisines
-            },
-            {
-                'name': 'Diets',
-                'data': data?.diets
             },
         ],
         'type': 'table'

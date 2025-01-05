@@ -28,13 +28,16 @@ const TabBlock = ({ data }: ITabData) => {
 
                 {data && data.map((item, index) => {
                     return (
-                        <div key={index}>
+                        <>
                             {index === activeTab &&
-                                <TabContent>
-                                    {item.type && item.type === 'table' && <ContentTable data={item.data} />}
-                                    {!item.type && 'Content'}
-                                </TabContent>}
-                        </div>
+                                <div>
+                                    <TabContent>
+                                        {item.type && item.type === 'table' && <ContentTable data={item.data} />}
+                                        {!item.type && 'Content'}
+                                    </TabContent>
+                                </div>
+                            }
+                        </>
                     )
                 })}
             </div>
