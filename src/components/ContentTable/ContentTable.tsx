@@ -1,6 +1,11 @@
 import styles from './ContentTable.module.sass'
 
-const ContentTable = ({ data }: { data: any[] }) => {
+interface IContentTableData {
+    name: string,
+    data: string[]
+}
+
+const ContentTable = ({ data }: { data: IContentTableData[] }) => {
     return (
         <div className={styles.table}>
             {data &&

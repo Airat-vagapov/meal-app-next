@@ -17,28 +17,6 @@ const Meal = ({ id }: { id: string }) => {
 
     const tabData: ITabData[] = [];
 
-    // Ingredients
-    tabData.push({
-        'name': 'Ingredients',
-        'data': data?.extendedIngredients,
-        
-    })
-
-    // Instructions
-    tabData.push({
-        'name': 'Instructions',
-        'data': [
-            {
-                'name': 'Description',
-                'data': data?.instructions
-            },
-            {
-                'name': 'Steps',
-                'data': data?.analyzedInstructions
-            }
-        ]
-    })
-
     // General dish info
     tabData.push({
         'name': 'General',
@@ -58,6 +36,31 @@ const Meal = ({ id }: { id: string }) => {
         ],
         'type': 'table'
     })
+
+    // Ingredients
+    tabData.push({
+        'name': 'Ingredients',
+        'data': data?.extendedIngredients,
+        'type': 'card'
+
+    })
+
+    // Instructions
+    tabData.push({
+        'name': 'Instructions',
+        'data': [
+            {
+                'name': 'Description',
+                'data': data?.instructions
+            },
+            {
+                'name': 'Steps',
+                'data': data?.analyzedInstructions
+            }
+        ]
+    })
+
+
 
     console.log(tabData)
 
