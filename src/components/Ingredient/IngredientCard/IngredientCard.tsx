@@ -1,10 +1,10 @@
 const IngredientCard = ({ data }: { data: any }) => {
     console.log(data)
     return (
-        <>
+        <div>
             IngredientCard
             {data.id}
-        </>
+        </div>
     )
 }
 

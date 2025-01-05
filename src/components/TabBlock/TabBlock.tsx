@@ -4,12 +4,12 @@ import { useState } from 'react'
 import Tab from '@/components/TabBlock/Tab/Tab'
 import TabContent from '@/components/TabBlock/TabContent/TabContent'
 import ContentTable from "@/components/ContentTable/ContentTable"
-import IngredientCard from '@/components/IngredientCard/IngredientCard'
-import List from '@/UI/List/List'
+import IngredientList from '@/components/Ingredient/IngredientList/IngredientList'
 
 import { ITabData } from '@/types/global'
 
 import styles from '@/components/TabBlock/TabBlock.module.sass'
+
 
 const TabBlock = ({ data }: ITabData) => {
     const [activeTab, setActiveTab] = useState(0);
@@ -28,26 +28,19 @@ const TabBlock = ({ data }: ITabData) => {
 
             {data && data.map((item, index) => {
                 return (
-                    <>
+                    <div key={index}>
                         {index === activeTab &&
                             <>
                                 <TabContent>
                                     {item.type && item.type === 'table' && <ContentTable data={item.data} />}
                                     {item.type && item.type === 'card' && item.name === 'Ingredients' &&
-                                        <List>
-                                            {item.data && item.data.map((value: any[], indx: number) => {
-                                                <div key={indx}>
-                                                    <IngredientCard data={value} />
-                                                </div>
-                                            })}
-                                        </List>
+                                        <IngredientList data={item.data}></IngredientList>
                                     }
-
                                     {!item.type && 'Content'}
                                 </TabContent>
                             </>
                         }
-                    </>
+                    </div>
                 )
             })}
         </div>

@@ -11,7 +11,7 @@ const ContentTable = ({ data }: { data: IContentTableData[] }) => {
             {data &&
                 data.map((item, index) => {
                     return (
-                        <>
+                        <div key={index}>
                             {
                                 item.data && item.data.length > 0 &&
                                 <div key={index} className={styles.tableRow}>
@@ -27,7 +27,7 @@ const ContentTable = ({ data }: { data: IContentTableData[] }) => {
                                     </div>
                                 </div>
                             }
-                        </>
+                        </div>
                     );
                 })}
         </div>
