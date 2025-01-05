@@ -1,6 +1,8 @@
+import styles from './List.module.sass';
+
 const List = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div>
+        <div className={styles.list}>
             {children}
         </div>
     )
