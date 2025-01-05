@@ -21,7 +21,7 @@ const Meal = ({ id }: { id: string }) => {
     tabData.push({
         'name': 'Ingredients',
         'data': data?.extendedIngredients,
-        'type': 'table'
+        
     })
 
     // Instructions
@@ -59,7 +59,8 @@ const Meal = ({ id }: { id: string }) => {
                 'name': 'Diets',
                 'data': data?.diets
             },
-        ]
+        ],
+        'type': 'table'
     })
 
     console.log(tabData)

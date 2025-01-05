@@ -31,7 +31,6 @@ const TabBlock = ({ data }: ITabData) => {
                         <div key={index}>
                             {index === activeTab &&
                                 <TabContent>
-                                    {/* {index} */}
                                     {item.type && item.type === 'table' && <ContentTable data={item.data} />}
                                     {!item.type && 'Content'}
                                 </TabContent>}

@@ -1,7 +1,17 @@
 const ContentTable = ({ data }: { data: any[] }) => {
     return (
-        <div>ContentTable</div>
-    )
-}
+        <>
+            {data &&
+                data.map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <div>{item.name}</div>
+                            <div>{item.data}</div>
+                        </div>
+                    );
+                })}
+        </>
+    );
+};
 
 export default ContentTable;
