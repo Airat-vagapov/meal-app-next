@@ -1,8 +1,8 @@
 const List = ({ children }: { children: React.ReactNode }) => {
     return (
-        <>
-            List
-        </>
+        <div>
+            {children}
+        </div>
     )
 }
 
