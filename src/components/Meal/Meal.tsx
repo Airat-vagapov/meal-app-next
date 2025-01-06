@@ -57,7 +57,8 @@ const Meal = ({ id }: { id: string }) => {
                 'name': 'Steps',
                 'data': data?.analyzedInstructions
             }
-        ]
+        ],
+        type: 'steps'
     })
 
 
@@ -88,8 +89,6 @@ const Meal = ({ id }: { id: string }) => {
             }
 
             <TabBlock data={tabData} name={""} />
-
-
         </div>
     )
 }

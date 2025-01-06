@@ -4,7 +4,6 @@ import styles from '@/components/Ingredient/Ingredient.module.sass'
 
 
 const IngredientCard = ({ data }: { data: any }) => {
-    console.log(data)
     return (
         <div className={styles.card}>
             <div className={styles.card__image}>

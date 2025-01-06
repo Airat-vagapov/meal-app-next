@@ -8,7 +8,7 @@ type PageTitleProps = {
     desc: any;
 }
 
-const HtmlRenderer: React.FC<{ content: string }> = ({ content }) => {
+export const HtmlRenderer: React.FC<{ content: string }> = ({ content }) => {
     let result
     if (content) {
         result = parse(content)
