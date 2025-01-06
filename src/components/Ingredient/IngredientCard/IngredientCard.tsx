@@ -10,12 +10,16 @@ const IngredientCard = ({ data }: { data: any }) => {
             <div className={styles.card__image}>
                 <img src={`https://spoonacular.com/cdn/ingredients_100x100/${data.image}`} alt="" />
             </div>
-            {data.original}
-            {data.aisle}
-            {data.amount}
-            {data.consistency}
-            {data.image}
-            {data.unit}
+
+            <div className={styles.card__content}>
+                <p className={styles.card__title}>{data.originalName}</p>
+                {data.measures.metric.unitShort ? `${data.measures.metric.amount + ' ' + data.measures.metric.unitShort}` : `${data.measures.metric.amount} pcs`}
+
+                <br />
+                {data.aisle}
+            </div>
+
+
         </div>
     )
 }
