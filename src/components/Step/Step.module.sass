@@ -1,6 +1,34 @@
 @import '/src/styles/vars'
 
-.step
+.stepBlock
+    display: flex
+    align-items: stretch
+    gap: 12px
+
+.step, .step__numberBlock, .step__contentBlock
     background-color: $base-white
     padding: 16px
     border-radius: 12px
+    &__numberBlock
+        width: 10%
+        display: flex
+        flex-direction: column
+        gap: 12px
+        align-items: center
+        justify-content: center
+    &__number
+        font-size: 40px
+        line-height: 48px
+        color: $orange
+    &__numberTitle
+        font-size: 20px
+    &__contentBlock
+        width: 100%
+        display: flex
+        flex-direction: column
+        gap: 16px
+
+    &__subName
+        font-size: 16px
+        font-weight: 600
+        line-height: 24px

@@ -1,8 +1,8 @@
 import styles from './List.module.sass';
 
-const List = ({ children }: { children: React.ReactNode }) => {
+const List = ({ key, children }: { key?: number, children: React.ReactNode }) => {
     return (
-        <div className={styles.list}>
+        <div key={key} className={styles.list}>
             {children}
         </div>
     )

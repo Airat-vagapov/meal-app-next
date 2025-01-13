@@ -1,6 +1,6 @@
-const TabContent = ({ children }: { children: React.ReactNode }) => {
+const TabContent = ({ key, children }: { key?: number, children: React.ReactNode }) => {
     return (
-        <div>
+        <div key={key}>
             {children}
         </div>
     )

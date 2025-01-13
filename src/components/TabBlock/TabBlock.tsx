@@ -29,21 +29,19 @@ const TabBlock = ({ data }: ITabData) => {
 
             {data && data.map((item, index) => {
                 return (
-                    <div key={index}>
+                    <>
                         {index === activeTab &&
-                            <>
-                                <TabContent>
-                                    {item.type && item.type === 'table' && <ContentTable data={item.data} />}
-                                    {item.type && item.type === 'card' && item.name === 'Ingredients' &&
-                                        <IngredientList data={item.data}></IngredientList>
-                                    }
-                                    {item.type && item.type === 'steps' && item.name === 'Instructions' &&
-                                        <Cooking data={item.data} />}
-                                    {!item.type && 'Content'}
-                                </TabContent>
-                            </>
+                            <TabContent key={index}>
+                                {item.type && item.type === 'table' && <ContentTable data={item.data} />}
+                                {item.type && item.type === 'card' && item.name === 'Ingredients' &&
+                                    <IngredientList data={item.data}></IngredientList>
+                                }
+                                {item.type && item.type === 'steps' && item.name === 'Instructions' &&
+                                    <Cooking data={item.data} />}
+                                {!item.type && 'Content'}
+                            </TabContent>
                         }
-                    </div>
+                    </>
                 )
             })}
         </div>
