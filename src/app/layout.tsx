@@ -6,11 +6,10 @@ import Content from "@/UI/Content/Content";
 
 import { Mulish } from 'next/font/google'
 import "@/styles/global.sass";
-import Head from "next/head";
 
 const mulish = Mulish({
   subsets: ['latin', 'cyrillic'],
-  weight: ['400', '700']
+  weight: ['400', '600', '700']
 });
 
 export const metadata: Metadata = {

@@ -11,7 +11,6 @@ const MealMainBlock = ({ image }: MealMainBlockProps) => {
     return (
         <div className={styles.meal}>
             <MealImageCard src={image} />
-            <MealInfoCard />
         </div>
     )
 }

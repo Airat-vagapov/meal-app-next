@@ -6,7 +6,12 @@ const Header = () => {
     return (
         <div className={styles.header}>
             <Container>
-                <p className={styles.headerTitle}>meal app</p>
+
+                <p className={styles.headerTitle}>
+                    <a href="/">
+                        meal app
+                    </a>
+                </p>
             </Container>
         </div>
     )
