@@ -1,5 +1,4 @@
-// import SubTitle from '@/UI/SubTitle/SubTitle'
-import SubTitle from './../../UI/SubTitle/SubTitle';
+import SubTitle from '@/UI/SubTitle/SubTitle'
 import ContentBlock from '@/UI/ContentBlock/ContentBlock'
 import CookingSteps from '@/components/Cooking/CookingSteps/CookingSteps'
 import { HtmlRenderer } from '@/UI/PageTitle/PageTitle';
