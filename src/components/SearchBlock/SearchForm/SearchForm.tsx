@@ -3,7 +3,7 @@ import { useRef } from "react";
 
 import { FormikProps, useFormik } from "formik";
 
-import Input from "@/UI/Input/Input";
+import Input from "@/ui/Input/Input";
 
 import { useGetMealsByNameMutation } from '@/services/mealApi'
 

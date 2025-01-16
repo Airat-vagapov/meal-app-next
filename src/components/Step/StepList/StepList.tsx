@@ -1,4 +1,4 @@
-import List from '@/UI/List/List'
+import List from '@/ui/List/List'
 import Step from '@/components/Step/Step'
 
 const StepList = ({ data }: { data: any }) => {

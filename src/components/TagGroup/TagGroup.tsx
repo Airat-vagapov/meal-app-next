@@ -1,4 +1,4 @@
-import Tag from '@/UI/Tag/Tag'
+import Tag from '@/ui/Tag/Tag'
 import styles from './TagGroup.module.sass'
 
 

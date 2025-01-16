@@ -1,4 +1,4 @@
-import List from '@/UI/List/List'
+import List from '@/ui/List/List'
 import styles from './Step.module.sass'
 
 const Step = ({ step }: { step: any }) => {

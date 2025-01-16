@@ -1,5 +1,3 @@
-import List from '@/UI/List/List'
-import Step from '@/components/Step/Step'
 import StepList from '@/components/Step/StepList/StepList'
 
 const CookingSteps = ({ steps }: { steps: any[] }) => {
