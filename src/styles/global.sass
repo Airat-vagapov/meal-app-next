@@ -1,6 +1,6 @@
 @import 'reset-css/sass/reset'
 @import '/src/styles/vars.sass'
-// @import '/src/styles/mixins.sass'
+@import '/src/styles/mixins.sass'
 
 html
     background-color: $gray
@@ -24,3 +24,6 @@ a
     color: inherit
     &:visited
         color: inherit
+    p:hover
+        @include orangeTextHover
+    
