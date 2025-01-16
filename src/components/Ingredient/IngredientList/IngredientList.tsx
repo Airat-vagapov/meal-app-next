@@ -1,4 +1,4 @@
-import List from '@/UI/List/List'
+import List from '@/ui/List/List'
 import IngredientCard from '@/components/Ingredient/IngredientCard/IngredientCard'
 
 const IngredientList = ({ data }: { data: any[] }) => {

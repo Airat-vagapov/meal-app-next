@@ -1,4 +1,4 @@
-import Icon from '@/UI/Icon/Icon'
+import Icon from '@/ui/Icon/Icon'
 import Score from '@/components/Score/Score'
 
 import { IMealInfoElement } from '@/types/meal'

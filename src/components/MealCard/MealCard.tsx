@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import TextLink from '@/UI/TextLink/TextLink'
+import TextLink from '@/ui/TextLink/TextLink'
 
 import styles from './MealCard.module.sass'
 import TagGroup from '@/components/TagGroup/TagGroup'

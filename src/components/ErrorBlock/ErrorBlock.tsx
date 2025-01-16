@@ -1,4 +1,4 @@
-import Icon from '@/UI/Icon/Icon';
+import Icon from '@/ui/Icon/Icon';
 import styles from './ErrorBlock.module.sass'
 
 const ErrorBlock = ({ data }: any) => {

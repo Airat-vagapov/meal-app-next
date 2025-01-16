@@ -1,7 +1,7 @@
 'use client'
 import { useGetMealByIdQuery } from "@/services/mealApi";
 
-import PageTitle from "@/UI/PageTitle/PageTitle";
+import PageTitle from "@/ui/PageTitle/PageTitle";
 import MealImageCard from '@/components/Meal/MealImageCard/MealImageCard';
 import MealInfoCard from '@/components/Meal/MealInfoCard/MealInfoCard'
 
