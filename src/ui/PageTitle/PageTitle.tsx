@@ -1,5 +1,4 @@
 import parse from 'html-react-parser'
-
 import styles from './PageTitle.module.sass';
 
 

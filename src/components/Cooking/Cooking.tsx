@@ -1,7 +1,7 @@
 import SubTitle from '@/ui/SubTitle/SubTitle'
 import ContentBlock from '@/ui/ContentBlock/ContentBlock'
 import CookingSteps from '@/components/Cooking/CookingSteps/CookingSteps'
-import { HtmlRenderer } from '@/UI/PageTitle/PageTitle';
+import { HtmlRenderer } from '@/ui/PageTitle/PageTitle';
 
 type CookingStep = {
     name: string,
