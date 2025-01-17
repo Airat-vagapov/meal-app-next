@@ -1,8 +1,8 @@
 import { useGetSimilarMealByIdQuery } from '@/services/mealApi'
 import MealCard from '@/components/MealCard/MealCard'
-import List from '@/UI/List/List'
-import Content from '@/UI/Content/Content'
-import SubTitle from '@/UI/SubTitle/SubTitle'
+import List from '@/ui/List/List'
+import Content from '@/ui/Content/Content'
+import SubTitle from '@/ui/SubTitle/SubTitle'
 
 import styles from './SimilarMeals.module.sass'
 
