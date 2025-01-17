@@ -68,7 +68,6 @@ const SearchForm: React.FC<ISearchForm> = ({
         if (value && value?.length < 2) { setIsFetchError(false) }
 
         if (value && value?.length === 0) {
-            // formik.handleSubmit()
             setMealData([])
             setIsDataReady(false)
         }

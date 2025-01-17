@@ -12,9 +12,7 @@ const SearchResultList: React.FC<ISearchResultList> = ({ data }) => {
         <>
             <div className={styles.searchList}>
                 {data && data.map((item, index) => (
-                    <div key={index}>
-                        <MealCard meal={item} />
-                    </div>
+                    <MealCard key={index} meal={item} />
                 ))}
             </div>
 

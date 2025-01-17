@@ -25,13 +25,14 @@ const mealApi = createApi({
             keepUnusedDataFor: 360000,
             providesTags: ['meal']
         }),
-        getSimilarMealById: build.mutation<any, string>({
-            query: (id) => `${id}/similar/?number=10&limitLicense=true`
+        getSimilarMealById: build.query<any, string>({
+            query: (id) => `${id}/similar/?apiKey=dbd53329fdd54f889424c42c0e88987f&number=5&limitLicense=true`
         })
     }),
 })
 
 export const {useGetMealsByNameMutation} = mealSearchApi
 export const {useGetMealByIdQuery} = mealApi
+export const {useGetSimilarMealByIdQuery} = mealApi
 export const {getMealById} = mealApi.endpoints
 export {mealSearchApi, mealApi};

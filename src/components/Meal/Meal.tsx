@@ -9,6 +9,7 @@ import styles from '@/components/Meal/MealMainBlock/MealMainBlock.module.sass'
 import TabBlock from "@/components/TabBlock/TabBlock";
 
 import { ITabData } from '@/types/global';
+import SimilarMeals from "@/modules/SimilarMeals/SimilarMeals";
 
 
 const Meal = ({ id }: { id: string }) => {
@@ -61,10 +62,6 @@ const Meal = ({ id }: { id: string }) => {
         type: 'steps'
     })
 
-
-
-    console.log(tabData)
-
     return (
         <div className={styles.mealPage}>
             <PageTitle title={data?.title} desc={data?.summary}></PageTitle>
@@ -89,6 +86,8 @@ const Meal = ({ id }: { id: string }) => {
             }
 
             <TabBlock data={tabData} name={""} />
+
+            <SimilarMeals id={id} />
         </div>
     )
 }
