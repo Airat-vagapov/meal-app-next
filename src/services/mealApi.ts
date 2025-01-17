@@ -8,7 +8,7 @@ const mealSearchApi = createApi({
     endpoints: (build) => ({
         getMealsByName: build.mutation<any, string>({
             query: (value) => `?apiKey=dbd53329fdd54f889424c42c0e88987f&query=${value}&number=20`
-        })
+        }),
     }),
 
 })
@@ -24,6 +24,9 @@ const mealApi = createApi({
             query: (id) => `${id}/information/?apiKey=dbd53329fdd54f889424c42c0e88987f&addTasteData=true&addWinePairing=true`,
             keepUnusedDataFor: 360000,
             providesTags: ['meal']
+        }),
+        getSimilarMealById: build.mutation<any, string>({
+            query: (id) => `${id}/similar/?number=10&limitLicense=true`
         })
     }),
 })
