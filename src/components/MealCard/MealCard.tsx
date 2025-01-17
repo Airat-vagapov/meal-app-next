@@ -25,11 +25,12 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color }) => {
                             [styles[`mealCard__${color}`]]: color
                         })}
                 >
-                    {meal.image &&
-                        <a href={`/meals/${meal?.id}`}>
-                            <img src={meal?.image} alt={meal?.title} />
-                        </a>
-                    }
+                    <a href={`/meals/${meal?.id}`}>
+                        <img src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} alt={meal?.title} />
+                        {/* <img src={meal?.image} alt={meal?.title} /> */}
+                        {/* <img src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} alt={meal?.title} /> */}
+                    </a>
+
 
                     <div className={styles.mealCardContent}>
                         <a href={`/meals/${meal?.id}`}>
