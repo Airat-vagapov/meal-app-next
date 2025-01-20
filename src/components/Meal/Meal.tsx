@@ -59,7 +59,7 @@ const Meal = ({ id }: { id: string }) => {
                 'data': data?.analyzedInstructions
             }
         ],
-        type: 'steps'
+        'type': 'steps'
     })
 
     return (

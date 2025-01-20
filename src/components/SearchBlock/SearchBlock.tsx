@@ -14,7 +14,6 @@ const SearchBlock = () => {
     const [fetchErrorData, setFetchErrorData] = useState<any>(null);
 
     return (
-        <Container>
             <div className={styles.searchFormBlock}>
                 <SearchForm
                     setMealData={(v) => setMeals(v)}
@@ -27,7 +26,6 @@ const SearchBlock = () => {
     
                 {isFetchError && <ErrorBlock data={fetchErrorData} />}
             </div>
-        </Container >
     )
 }
 

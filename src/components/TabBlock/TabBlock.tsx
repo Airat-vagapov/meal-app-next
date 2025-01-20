@@ -28,18 +28,26 @@ const TabBlock = ({ data }: ITabData) => {
             </div>
 
             {data && data.map((item, index) => {
+                console.log(item)
+                console.log(index)
                 return (
                     <>
                         {index === activeTab &&
-                            <TabContent key={index}>
-                                {item.type && item.type === 'table' && <ContentTable data={item.data} />}
-                                {item.type && item.type === 'card' && item.name === 'Ingredients' &&
-                                    <IngredientList data={item.data}></IngredientList>
-                                }
-                                {item.type && item.type === 'steps' && item.name === 'Instructions' &&
-                                    <Cooking data={item.data} />}
-                                {!item.type && 'Content'}
-                            </TabContent>
+                            <div key={index}>
+                                <TabContent >
+                                    {item.type && item.type === 'table' && <ContentTable data={item.data} />}
+                                    {item.type && item.type === 'card' && item.name === 'Ingredients' &&
+                                        <IngredientList data={item.data}></IngredientList>
+                                    }
+                                    {item.type && item.type === 'steps' && item.name === 'Instructions' &&
+                                        <Cooking data={item.data} />}
+                                    {!item.type && !Array.isArray(item.data) &&
+                                        <div>
+                                            {item.data}
+                                        </div>
+                                    }
+                                </TabContent>
+                            </div>
                         }
                     </>
                 )
