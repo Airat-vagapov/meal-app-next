@@ -3,3 +3,8 @@ export interface ITabData {
     data: any[];
     type?: string;
 }
+
+export interface ITabContent {
+    name: string;
+    data: any;
+}

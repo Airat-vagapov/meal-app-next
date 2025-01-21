@@ -1,4 +1,4 @@
-import { forwardRef, RefObject } from 'react'
+import { forwardRef, RefObject, useRef } from 'react'
 import styles from './Input.module.sass'
 
 interface IInput {
@@ -12,6 +12,7 @@ interface IInput {
 
 const Input = forwardRef<HTMLInputElement, IInput>((
     { name, id, value, placeholder, onChange }, ref) => {
+    const input = useRef()
     return (
         <input
             className={styles.input}

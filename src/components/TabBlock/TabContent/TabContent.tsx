@@ -1,15 +1,9 @@
-const TabContent = ({ key, children }: { key?: number, children: React.ReactNode }) => {
-    console.log(key);
+const TabContent = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
-            {key &&
-                <div key={key}>
-                    {children}
-                </div>
-            }
+            <div>{children}</div>
         </>
-
-    )
-}
+    );
+};
 
 export default TabContent;

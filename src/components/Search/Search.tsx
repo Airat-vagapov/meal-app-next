@@ -1,5 +1,5 @@
 import SearchBlock from "@/components/SearchBlock/SearchBlock";
-import RandomSearch from '@/components/RandomSearch/RandomSearch'
+import RandomSearchBlock from '@/components/RandomSearch/RandomSearchBlock/RandomSearchBlock'
 import TabBlock from '@/components/TabBlock/TabBlock'
 
 import { ITabData } from '@/types/global';
@@ -21,13 +21,13 @@ const Search = () => {
         'name': "Random search",
         'data': [{
             'name': "Random search",
-            'data': <RandomSearch />
+            'data': <RandomSearchBlock />
         }]
     })
 
     return (
         <div>
-            <TabBlock data={tabData}></TabBlock>
+            <TabBlock data={tabData} name={""}></TabBlock>
             {/* <div>Search</div>
             <SearchBlock /> */}
         </div>
