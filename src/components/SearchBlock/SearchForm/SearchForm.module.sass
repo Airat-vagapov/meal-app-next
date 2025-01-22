@@ -1,4 +1,5 @@
 
+@import '/src/styles/mixins.sass'
 @import '/src/styles/vars.sass'
 .searchFormBlock
     display: flex
@@ -23,6 +24,13 @@
         padding: 20px 24px
         font-size: 32px
         line-height: 40px
+        @include sm
+        font-size: 24px
+        line-height: 32px
+        @include xs
+        padding: 16px
+        font-size: 20px
+        line-height: 28px
 
 .searchList
     background: $base-white

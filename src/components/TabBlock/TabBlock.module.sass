@@ -1,9 +1,15 @@
+@import '/src/styles/mixins.sass'
+@import '/src/styles/vars.sass'
+
 .tabBlock
     display: flex
     flex-direction: column
     gap: 32px
+    @include sm
+    gap: 24px
+    @include sm
+    gap: 20px
 
 .tags
     display: flex
     gap: 12px
-

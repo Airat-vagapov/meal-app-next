@@ -1,2 +1,9 @@
+@import '/src/styles/vars.sass'
+@import '/src/styles/mixins.sass'
+
 .content
     padding-top: 60px
+    @include sm
+        padding-top: 30px
+    @include xs
+        padding-top: 20px

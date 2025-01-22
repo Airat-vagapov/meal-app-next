@@ -1,9 +1,12 @@
 @import '/src/styles/vars'
+@import '/src/styles/mixins'
 
 .stepBlock
     display: flex
     align-items: stretch
     gap: 12px
+    @include sm
+    flex-direction: column
 
 .step, .step__numberBlock, .step__contentBlock
     background-color: $base-white
@@ -16,10 +19,17 @@
         gap: 12px
         align-items: center
         justify-content: center
+        @include sm
+        width: 100%
     &__number
         font-size: 40px
         line-height: 48px
         color: $orange
+        @include sm
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
     &__numberTitle
         font-size: 20px
     &__contentBlock

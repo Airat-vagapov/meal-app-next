@@ -1,9 +1,9 @@
-import Image from "next/image";
 import TextLink from "@/ui/TextLink/TextLink";
 
 import styles from "./MealCard.module.sass";
-import TagGroup from "@/components/TagGroup/TagGroup";
 import classNames from "classnames";
+import { useMediaQuery } from "react-responsive";
+import Button from "@/ui/Button/Button";
 
 interface IMealCard {
     meal: any;
@@ -16,6 +16,8 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color }) => {
     // dataArr.push(meal?.strArea);
     // dataArr.push(meal?.strCategory);
 
+    // Media Queries
+    const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
     return (
         <>
             {meal && (
@@ -38,15 +40,17 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color }) => {
                         </a>
                         {/* {dataArr.length && <TagGroup data={dataArr} />} */}
 
+                        <div className={styles.mealLink}>
+                            {isMobile ? <Button link={`/meals/${meal?.id}`}>Show more</Button> : <TextLink
+                                size={16}
+                                text="Show more"
+                                link={`/meals/${meal?.id}`}
+                            />}
+
+                        </div>
                     </div>
 
-                    <div className={styles.mealLink}>
-                        <TextLink
-                            size={16}
-                            text="Show more"
-                            link={`/meals/${meal?.id}`}
-                        />
-                    </div>
+
                 </div>
             )}
         </>

@@ -1,4 +1,5 @@
 @import '/src/styles/vars.sass'
+@import '/src/styles/mixins.sass'
 
 .mealCard
     display: flex
@@ -7,6 +8,8 @@
     border-radius: 12px
     // padding-bottom: 20px
     transition: all 0.3s ease
+    @include sm
+        flex-direction: column
     &:hover
         -webkit-box-shadow: 4px -4px 38px -1px rgba(234, 146, 21, 0.09)
         -moz-box-shadow: 4px -4px 38px -1px rgba(234, 146, 21, 0.09)
@@ -15,14 +18,26 @@
     &__white
         background-color: $base-white
 
+    img
+        width: 100%
     .mealCardContent
+        width: 100%
         display: flex
-        flex-direction: column
-        justify-content: space-between
+        gap: 20px
+        @include lg
+            flex-direction: column
     .mealTitle
         font-size: 24px
         line-height: 32px
+        @include lg
+            font-size: 18px
+            margin-top: auto
+        @include sm
+            font-size: 24px
     .mealLink
         display: flex
         margin-left: auto
         align-items: center
+        @include lg
+            margin-left: 0
+            margin-top: auto
