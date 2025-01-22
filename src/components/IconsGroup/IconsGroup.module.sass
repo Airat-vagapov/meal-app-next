@@ -1,9 +1,12 @@
+@import 'src/styles/mixins.sass'
 @import 'src/styles/vars.sass'
 .iconGroup
     display: grid
     grid-template-columns: repeat(3,1fr)
     column-gap: 16px
     row-gap: 20px
+    @include sm
+        grid-template-columns: repeat(2,1fr)
 
 .content
     display: flex

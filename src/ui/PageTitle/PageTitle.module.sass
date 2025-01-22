@@ -1,11 +1,15 @@
-@import '/src/styles/vars.sass'
-@import '/src/styles/mixins.sass'
+@import '/src/styles/vars'
+@import '/src/styles/mixins'
 
 .title
     font-size: 40px
     line-height: 64px
     font-weight: 600
     margin-bottom: 24px
+    @include sm
+        font-size: 30px
+        line-height: 48px
+        margin-bottom: 16px
 
 .desc
     width: 80%
