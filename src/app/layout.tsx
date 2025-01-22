@@ -33,9 +33,9 @@ export default function RootLayout({
       </head>
       <body className={mulish.className}>
         <Header />
-        <Content>
+        {/* <Content> */}
           {children}
-        </Content>
+        {/* </Content> */}
 
       </body>
     </html>
