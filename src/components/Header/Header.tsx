@@ -9,7 +9,7 @@ const Header = () => {
 
                 <p className={styles.headerTitle}>
                     <a href="/">
-                        meal app
+                        Mealler
                     </a>
                 </p>
             </Container>
