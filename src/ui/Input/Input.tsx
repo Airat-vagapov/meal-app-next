@@ -6,16 +6,16 @@ import styles from './Input.module.sass'
 import { mergeRefs } from 'react-merge-refs';
 
 interface IInput {
-    type?: string;
+    inputType?: string;
     name: string;
     placeholder?: string;
     id: string;
-    value?: string;
+    value?: string ;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = forwardRef<HTMLInputElement, IInput>((
-    { name, id, value, placeholder, onChange }, ref) => {
+    { inputType = 'text', name, id, value, placeholder, onChange }, ref) => {
     // Refs
     const inputRef = useRef<HTMLInputElement>(null)
     const clearInputBtnRef = useRef<HTMLDivElement>(null)
@@ -55,7 +55,7 @@ const Input = forwardRef<HTMLInputElement, IInput>((
             <input
                 className={styles.input}
                 ref={mergeRefs([ref, inputRef])}
-                type="text"
+                type={inputType}
                 id={id}
                 placeholder={placeholder}
                 name={name}

@@ -5,4 +5,8 @@ export interface IMealInfoElement {
     type?: string;
 }
 
-
+export interface IMealSearchParams {
+    search: string,
+    number: number,
+    offset: number
+}

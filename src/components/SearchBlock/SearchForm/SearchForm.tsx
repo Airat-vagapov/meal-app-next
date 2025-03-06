@@ -12,6 +12,8 @@ import classNames from "classnames";
 
 interface FormValues {
     search: string;
+    number: number;
+    offset: number;
 }
 
 interface ISearchForm {
@@ -19,7 +21,8 @@ interface ISearchForm {
     setMealData: (value: any) => void,
     setIsDataReady: (value: boolean) => void
     setIsFetchError: (value: boolean) => void,
-    setFetchErrorData: (value: any) => void
+    setFetchErrorData: (value: any) => void,
+    setSearchQuery: (value: string) => void,
 }
 
 const SearchForm: React.FC<ISearchForm> = ({
@@ -27,7 +30,8 @@ const SearchForm: React.FC<ISearchForm> = ({
     setMealData,
     setIsDataReady,
     setIsFetchError,
-    setFetchErrorData
+    setFetchErrorData,
+    setSearchQuery
 }) => {
     // Refs
     const searchInputRef = useRef<HTMLInputElement | null>(null)
@@ -39,18 +43,20 @@ const SearchForm: React.FC<ISearchForm> = ({
     const searchForm = useFormik({
         initialValues: {
             search: '',
+            number: 0,
+            offset: 0,
         },
         onSubmit: async (values) => {
             setIsFetchError(false)
-
+            values.offset = 0
+            values.number = 5
             try {
-                const data = await getMealsByName(values.search).unwrap()
+                const data = await getMealsByName(values).unwrap()
                 setMealData(data?.results)
                 setIsDataReady(true)
                 setIsFetchError(false)
 
             } catch (err) {
-                console.error(err)
                 setIsFetchError(isError)
                 setFetchErrorData(error)
             }
@@ -87,9 +93,30 @@ const SearchForm: React.FC<ISearchForm> = ({
                 placeholder="Enter meal name"
                 onChange={(e) => {
                     changeHandler(e, searchForm)
+                    console.log(e.target.value)
+                    setSearchQuery(e.target.value)
                 }
                 }
                 value={searchForm.values.search} />
+            {/* <Input
+                inputType='hidden'
+                name='number'
+                id='number'
+                value={'10'}
+                onChange={(e) => {
+                    changeHandler(e, searchForm)
+                }}
+            />
+            <Input
+                inputType='hidden'
+                name='offset'
+                id='number'
+                value={'10'}
+                onChange={(e) => {
+                    changeHandler(e, searchForm)
+                }}
+
+            /> */}
         </form>
     )
 }

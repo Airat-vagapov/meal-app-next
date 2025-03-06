@@ -1,13 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import {IMealSearchParams} from '@/types/meal'
+
 const mealSearchApi = createApi({
     reducerPath: 'mealSearchApi',
     baseQuery: fetchBaseQuery({
         baseUrl: "https://api.spoonacular.com/recipes/complexSearch/",
     }),
     endpoints: (build) => ({
-        getMealsByName: build.mutation<any, string>({
-            query: (value) => `?apiKey=dbd53329fdd54f889424c42c0e88987f&query=${value}&number=20`
+        getMealsByName: build.mutation<any, IMealSearchParams>({
+            query: (data) => `?apiKey=dbd53329fdd54f889424c42c0e88987f&query=${data.search}&number=${data.number}&offset=${data.offset}`
         }),
     }),
 

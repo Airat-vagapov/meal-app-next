@@ -1,14 +1,17 @@
-// import { useRouter } from "next/router";
+'use client'
+
+import { useSearchParams } from "next/navigation";
+
 
 const MealsPage = () => {
-    // const router = useRouter();
-    // const { id } = router.query;
+    const searchParams = useSearchParams()
+    const searchQuery = searchParams.get("query")
 
-    // console.log(id);
-
+    
     return (
         <div>
             <h1>Meals Page</h1>
+
         </div>
     )
 }
