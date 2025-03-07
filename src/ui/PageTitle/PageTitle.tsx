@@ -4,7 +4,7 @@ import styles from './PageTitle.module.sass';
 
 type PageTitleProps = {
     title: string;
-    desc: any;
+    desc?: any;
 }
 
 export const HtmlRenderer: React.FC<{ content: string }> = ({ content }) => {
@@ -23,9 +23,12 @@ const PageTitle: React.FC<PageTitleProps> = ({ title, desc }) => {
     return (
         <div>
             <h1 className={styles.title}>{title}</h1>
-            <div className={styles.desc}>
-                <HtmlRenderer content={desc}></HtmlRenderer>
-            </div>
+            {desc &&
+                <div className={styles.desc}>
+                    <HtmlRenderer content={desc}></HtmlRenderer>
+                </div>
+            }
+
         </div>
     )
 }

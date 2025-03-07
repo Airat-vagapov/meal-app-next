@@ -11,6 +11,10 @@ const mealSearchApi = createApi({
         getMealsByName: build.mutation<any, IMealSearchParams>({
             query: (data) => `?apiKey=dbd53329fdd54f889424c42c0e88987f&query=${data.search}&number=${data.number}&offset=${data.offset}`
         }),
+        fetchMealsByName: build.query<any, IMealSearchParams>({
+            query: (data) => `?apiKey=dbd53329fdd54f889424c42c0e88987f&query=${data.search}&number=${data.number}&offset=${data.offset}`,
+            keepUnusedDataFor: 360000,
+        })
     }),
 
 })
@@ -37,6 +41,8 @@ const mealApi = createApi({
 })
 
 export const {useGetMealsByNameMutation} = mealSearchApi
+export const {useFetchMealsByNameQuery} = mealSearchApi
+
 export const {useGetMealByIdQuery} = mealApi
 export const {useGetSimilarMealByIdQuery} = mealApi
 export const {useGetRandomMealsMutation} = mealApi

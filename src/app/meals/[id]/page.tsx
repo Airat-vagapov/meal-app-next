@@ -1,13 +1,10 @@
 "use client"
-
-import { useRouter } from "next/router";
-
-import { getMealById } from "@/services/mealApi"
 import { store } from "@/store/store";
+import { Provider } from "react-redux";
 
 import Meal from "@/components/Meal/Meal";
 import Container from "@/components/Container/Container";
-import { Provider } from "react-redux";
+import Content from '@/ui/Content/Content'
 
 
 interface MealPageProps {
@@ -16,11 +13,12 @@ interface MealPageProps {
 
 const MealPage = ({ params }: MealPageProps) => {
     const { id } = params;
-    // const response = await store.dispatch(getMealById.initiate(id));
     return (
         <Provider store={store}>
             <Container>
-                <Meal id={id} />
+                <Content>
+                    <Meal id={id} />
+                </Content>
             </Container>
         </Provider>
     )

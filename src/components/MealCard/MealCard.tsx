@@ -9,9 +9,10 @@ interface IMealCard {
     meal: any;
     key?: string | number;
     color?: string;
+    column?: boolean;
 }
 
-const MealCard: React.FC<IMealCard> = ({ key, meal, color }) => {
+const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
     // const dataArr: string[] = [];
     // dataArr.push(meal?.strArea);
     // dataArr.push(meal?.strCategory);
@@ -24,7 +25,8 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color }) => {
                 <div key={key}
                     className={classNames(styles.mealCard,
                         {
-                            [styles[`mealCard__${color}`]]: color
+                            [styles[`mealCard__${color}`]]: color,
+                            [styles[`mealCard--column`]]: column,
                         })}
                 >
                     <a href={`/meals/${meal?.id}`}>

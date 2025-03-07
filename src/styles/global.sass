@@ -32,6 +32,10 @@ a
     @include transition
     // &:visited
     //     color: inherit
+    &.link
+        @include transition
+        &:hover
+            @include orangeTextHover
     p
         @include transition
     p:hover

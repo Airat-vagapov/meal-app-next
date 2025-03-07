@@ -11,7 +11,7 @@ const SimilarMeals = ({ id }: { id: string }) => {
 
     console.log(data)
     return (
-        <Content>
+        <div>
             <SubTitle>Similar dishes</SubTitle>
             <List>
                 {data && data.map((meal: any, index: number) => {
@@ -20,7 +20,7 @@ const SimilarMeals = ({ id }: { id: string }) => {
                     )
                 })}
             </List>
-        </Content>
+        </div>
     )
 }
 

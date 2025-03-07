@@ -63,7 +63,7 @@ const Meal = ({ id }: { id: string }) => {
     })
 
     return (
-        <div className={styles.mealPage}>
+        <>
             <PageTitle title={data?.title} desc={data?.summary}></PageTitle>
             {data &&
                 <div className={styles.meal}>
@@ -88,7 +88,7 @@ const Meal = ({ id }: { id: string }) => {
             <TabBlock data={tabData} name={""} />
 
             <SimilarMeals id={id} />
-        </div>
+        </>
     )
 }
 
