@@ -8,7 +8,7 @@ import Button from "@/ui/Button/Button";
 
 interface ISearchResultList {
     data: any[] | undefined,
-    searchQuery: string,
+    searchQuery?: string,
 }
 
 const SearchResultList: React.FC<ISearchResultList> = ({ data, searchQuery }) => {
@@ -22,9 +22,12 @@ const SearchResultList: React.FC<ISearchResultList> = ({ data, searchQuery }) =>
                             <MealCard key={index} meal={item} />
                         ))}
                     </div>
-                    <div className={styles.searchList__link}>
-                        <Button link={`/meals/?query=${searchQuery}&page=1`}>Show all</Button>
-                    </div>
+                    {searchQuery &&
+                        <div className={styles.searchList__link}>
+                            <Button link={`/meals/?query=${searchQuery}&page=1`}>Show all</Button>
+                        </div>
+                    }
+
                 </>
                 : <InfoBlock />
             }

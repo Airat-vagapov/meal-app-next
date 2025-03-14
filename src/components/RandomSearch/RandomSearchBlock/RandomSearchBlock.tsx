@@ -7,10 +7,11 @@ import styles from '../RandomSearch.module.sass'
 const RandomSearchBlock = () => {
     // States
     const [meals, setMeals] = useState<any[]>()
+    console.log(meals)
     return (
         <div className={styles.formBlock}>
             <RandomSearch setMealData={(v) => setMeals(v)}/>
-
+        <hr />
             {meals?.length && <SearchResultList data={meals} />}
         </div>
     )
