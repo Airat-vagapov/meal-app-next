@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useFetchMealsByNameQuery } from '@/services/mealApi'
-import { IMealSearchParams } from '@/types/meal'
+import { IMealSearchParams, IMealCard } from '@/types/meal'
 
 
 import MealCard from '@/components/MealCard/MealCard'
@@ -48,12 +48,11 @@ const MealList: React.FC<IMealList> = () => {
 
     // Link creation
     const currentUrl = window.location.pathname + window.location.search;
-    console.log(currentUrl);
 
     return (
         <>
             <div className={styles.mealListGrid}>
-                {data?.results && data.results.map((item, index) => {
+                {data?.results && data.results.map((item: IMealCard, index: number) => {
                     return (
                         <>
                             <MealCard meal={item} key={index} color={'white'} column={true} ></MealCard>
