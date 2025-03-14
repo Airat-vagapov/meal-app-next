@@ -1,3 +1,4 @@
+import { useSearchParams } from "next/navigation";
 import { useFetchMealsByNameQuery } from '@/services/mealApi'
 import { IMealSearchParams } from '@/types/meal'
 
@@ -6,22 +7,40 @@ import MealCard from '@/components/MealCard/MealCard'
 
 import styles from '@/components/MealList/MealList.module.sass'
 import Pagination from '@/ui/Pagination/Pagination'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 interface IMealList {
-    query: string;
-    page: number;
+    // query: string;
+    // page: number;
 }
 
-const MealList: React.FC<IMealList> = ({ query, page }) => {
-    const [currentPage, setCurrentPage] = useState<number>(page)
-    const searchOffset = Number(page) - 1
+// let page = 0;
+// let searchQuery = '';
 
+const MealList: React.FC<IMealList> = () => {
+    // States
+    const [page, setPage] = useState<number>(0)
+    const [query, setQuery] = useState<string>('')
+
+    // Get URL params
+    const searchParams = useSearchParams()
+
+    useEffect(() => {
+        const searchQuery = searchParams.get("query") ?? '';
+        setQuery(searchQuery)
+        const pageData = Number(searchParams.get("page")) ?? 0;
+        setPage(pageData)
+    }, [searchParams]);
+
+
+
+    const url = window.location.href;
+    const searchOffset = (page - 1) * 10 ?? 0
     const searchData: IMealSearchParams = {
         search: query,
         number: 12,
-        offset: searchOffset,
+        offset: searchOffset ?? 0,
     }
 
     // API
@@ -43,7 +62,7 @@ const MealList: React.FC<IMealList> = ({ query, page }) => {
                 })}
             </div >
 
-            <Pagination link={currentUrl} page={currentPage}></Pagination>
+            <Pagination url={url} page={page}></Pagination>
         </>
     )
 

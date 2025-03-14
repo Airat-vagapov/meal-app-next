@@ -23,7 +23,7 @@ const SearchResultList: React.FC<ISearchResultList> = ({ data, searchQuery }) =>
                         ))}
                     </div>
                     <div className={styles.searchList__link}>
-                        <Button link={`/meals/?query=${searchQuery}`}>Show all</Button>
+                        <Button link={`/meals/?query=${searchQuery}&page=1`}>Show all</Button>
                     </div>
                 </>
                 : <InfoBlock />

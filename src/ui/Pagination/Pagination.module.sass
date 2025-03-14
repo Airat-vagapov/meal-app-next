@@ -1,4 +1,9 @@
+@import 'src/styles/mixins.sass'
 .pagination
     display: flex
     gap: 20px
     align-items: center
+    @include lg
+        justify-content: center
+        a span
+            font-size: 36px

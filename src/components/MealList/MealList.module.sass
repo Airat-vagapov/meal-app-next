@@ -1,4 +1,10 @@
+@import 'src/styles/mixins.sass'
+@import 'src/styles/vars.sass'
 .mealListGrid
     display: grid
     grid-template-columns: repeat(3, 1fr)
     gap: 24px
+    @include lg
+        grid-template-columns: repeat(2, 1fr)
+    @include sm
+            grid-template-columns: 1fr

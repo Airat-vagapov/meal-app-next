@@ -33,9 +33,15 @@ a
     // &:visited
     //     color: inherit
     &.link
+        cursor: pointer
         @include transition
         &:hover
             @include orangeTextHover
+        &.disabled
+            cursor: none
+            pointer-events: none
+            color: $light-gray
+
     p
         @include transition
     p:hover
