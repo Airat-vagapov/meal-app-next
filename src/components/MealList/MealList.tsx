@@ -1,3 +1,5 @@
+'use client'
+
 import { useSearchParams } from "next/navigation";
 import { useFetchMealsByNameQuery } from '@/services/mealApi'
 import { IMealSearchParams, IMealCard } from '@/types/meal'
@@ -13,10 +15,8 @@ import { useEffect, useState } from 'react'
 interface IMealList {
     // query: string;
     // page: number;
+    currentUrl?: string;
 }
-
-// let page = 0;
-// let searchQuery = '';
 
 const MealList: React.FC<IMealList> = () => {
     // States
@@ -33,8 +33,6 @@ const MealList: React.FC<IMealList> = () => {
         setPage(pageData)
     }, [searchParams]);
 
-
-
     const url = window.location.href;
     const searchOffset = (page - 1) * 10 ?? 0
     const searchData: IMealSearchParams = {
@@ -45,9 +43,6 @@ const MealList: React.FC<IMealList> = () => {
 
     // API
     const { data, isLoading } = useFetchMealsByNameQuery(searchData)
-
-    // Link creation
-    const currentUrl = window.location.pathname + window.location.search;
 
     return (
         <>

@@ -8,6 +8,7 @@ import Container from '@/components/Container/Container'
 import MealList from '@/components/MealList/MealList'
 import PageTitle from '@/ui/PageTitle/PageTitle'
 import Content from '@/ui/Content/Content'
+import { Suspense } from "react";
 
 const MealsPage = () => {
     const searchParams = useSearchParams()
