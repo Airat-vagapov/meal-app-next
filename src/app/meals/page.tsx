@@ -7,6 +7,7 @@ import Container from '@/components/Container/Container'
 import MealsPageContent from "@/components/MealsPageContent/MealsPageContent";
 
 import { Suspense } from "react";
+import Preloader from "@/ui/Preloader/Preloader";
 
 const MealsPage = () => {
 
@@ -14,7 +15,7 @@ const MealsPage = () => {
     return (
         <Provider store={store}>
             <Container>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Preloader />}>
                     <MealsPageContent />
                 </Suspense>
             </Container>

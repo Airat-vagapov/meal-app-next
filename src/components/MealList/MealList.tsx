@@ -10,6 +10,7 @@ import MealCard from '@/components/MealCard/MealCard'
 import styles from '@/components/MealList/MealList.module.sass'
 import Pagination from '@/ui/Pagination/Pagination'
 import { useEffect, useState } from 'react'
+import Preloader from "@/ui/Preloader/Preloader";
 
 
 interface IMealList {
@@ -42,10 +43,11 @@ const MealList: React.FC<IMealList> = ({ searchParams }) => {
     }
 
     // API
-    const { data, isLoading } = useFetchMealsByNameQuery(searchData)
+    const { data, isLoading, isFetching } = useFetchMealsByNameQuery(searchData)
 
     return (
         <>
+            {isFetching && <Preloader />}
             <div className={styles.mealListGrid}>
                 {data?.results && data.results.map((item: IMealCard, index: number) => {
                     return (
