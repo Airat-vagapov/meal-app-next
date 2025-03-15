@@ -1,5 +1,6 @@
 import parse from 'html-react-parser'
 import styles from './PageTitle.module.sass';
+import { useSearchParams } from 'next/navigation';
 
 
 type PageTitleProps = {
