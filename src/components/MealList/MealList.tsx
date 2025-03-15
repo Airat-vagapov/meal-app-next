@@ -15,16 +15,16 @@ import { useEffect, useState } from 'react'
 interface IMealList {
     // query: string;
     // page: number;
-    currentUrl?: string;
+    searchParams: URLSearchParams;
 }
 
-const MealList: React.FC<IMealList> = () => {
+const MealList: React.FC<IMealList> = ({ searchParams }) => {
     // States
     const [page, setPage] = useState<number>(0)
     const [query, setQuery] = useState<string>('')
 
     // Get URL params
-    const searchParams = useSearchParams()
+    // const searchParams = useSearchParams()
 
     useEffect(() => {
         const searchQuery = searchParams.get("query") ?? '';
