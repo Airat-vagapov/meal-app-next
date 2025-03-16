@@ -35,6 +35,7 @@ const TabBlock = ({ data }: ITabData) => {
 
             {data &&
                 data.map((item, indx: number) => {
+                    console.log(item.data)
                     return (
                         <>
                             {indx === activeTab && (

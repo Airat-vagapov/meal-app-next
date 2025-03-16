@@ -35,9 +35,8 @@ const MealInfoCard = (
     }:
         MealInfoCardProps
 ) => {
-    // Create info data array
     
-
+    // Create info data array
     const scoresArr: IMealInfoElement[] = []
     healthScore && scoresArr.push({
         'name': 'Health Score',

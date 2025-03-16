@@ -10,6 +10,7 @@ import TabBlock from "@/components/TabBlock/TabBlock";
 
 import { ITabData } from '@/types/global';
 import SimilarMeals from "@/modules/SimilarMeals/SimilarMeals";
+import Preloader from "@/ui/Preloader/Preloader";
 
 
 const Meal = ({ id }: { id: string }) => {
@@ -64,6 +65,7 @@ const Meal = ({ id }: { id: string }) => {
 
     return (
         <>
+            {isFetching && <Preloader />}
             <PageTitle title={data?.title} desc={data?.summary}></PageTitle>
             {data &&
                 <div className={styles.meal}>

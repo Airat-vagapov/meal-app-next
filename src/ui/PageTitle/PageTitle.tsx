@@ -1,6 +1,6 @@
 import parse from 'html-react-parser'
 import styles from './PageTitle.module.sass';
-import { useSearchParams } from 'next/navigation';
+import BackButton from '@/ui/BackButton/BackButton';
 
 
 type PageTitleProps = {
@@ -23,6 +23,9 @@ export const HtmlRenderer: React.FC<{ content: string }> = ({ content }) => {
 const PageTitle: React.FC<PageTitleProps> = ({ title, desc }) => {
     return (
         <div>
+            <div className={styles.backBtn}>
+                <BackButton />
+            </div>
             <h1 className={styles.title}>{title}</h1>
             {desc &&
                 <div className={styles.desc}>
