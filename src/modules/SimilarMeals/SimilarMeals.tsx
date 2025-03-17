@@ -8,8 +8,6 @@ import styles from './SimilarMeals.module.sass'
 
 const SimilarMeals = ({ id }: { id: string }) => {
     const { data, isFetching, isLoading } = useGetSimilarMealByIdQuery(id)
-
-    console.log(data)
     return (
         <div>
             <SubTitle>Similar dishes</SubTitle>

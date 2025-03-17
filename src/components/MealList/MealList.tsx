@@ -14,8 +14,6 @@ import Preloader from "@/ui/Preloader/Preloader";
 
 
 interface IMealList {
-    // query: string;
-    // page: number;
     searchParams: URLSearchParams;
 }
 
@@ -25,8 +23,6 @@ const MealList: React.FC<IMealList> = ({ searchParams }) => {
     const [query, setQuery] = useState<string>('')
 
     // Get URL params
-    // const searchParams = useSearchParams()
-
     useEffect(() => {
         const searchQuery = searchParams.get("query") ?? '';
         setQuery(searchQuery)
@@ -35,21 +31,31 @@ const MealList: React.FC<IMealList> = ({ searchParams }) => {
     }, [searchParams]);
 
     const url = window.location.href;
-    const searchOffset = (page - 1) * 10 ?? 0
-    const searchData: IMealSearchParams = {
+    let searchOffset
+    let searchData: IMealSearchParams
+    if (page > 0) {
+        searchOffset = (page - 1) * 10 ?? 0
+    }
+
+    console.log(query)
+    console.log(searchOffset)
+
+    searchData = {
         search: query,
         number: 12,
         offset: searchOffset ?? 0,
     }
 
+
     // API
     const { data, isLoading, isFetching } = useFetchMealsByNameQuery(searchData)
+
 
     return (
         <>
             {isFetching && <Preloader />}
             <div className={styles.mealListGrid}>
-                {data?.results && data.results.map((item: IMealCard, index: number) => {
+                {data && data?.results && data.results.map((item: IMealCard, index: number) => {
                     return (
                         <>
                             <MealCard meal={item} key={index} color={'white'} column={true} ></MealCard>
@@ -57,7 +63,6 @@ const MealList: React.FC<IMealList> = ({ searchParams }) => {
                     )
                 })}
             </div >
-
             <Pagination url={url} page={page}></Pagination>
         </>
     )
