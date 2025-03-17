@@ -17,7 +17,6 @@ const Cooking = ({ data }: { data: CookingStep[] }) => {
             <ContentBlock>
                 {data && data.map((item: CookingStep, index: number) => {
                     return (
-
                         <div key={index}>
                             {item.name === "Description" && (item.data != null) &&
                                 <div>

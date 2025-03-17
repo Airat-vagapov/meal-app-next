@@ -4,6 +4,8 @@ import styles from "./MealCard.module.sass";
 import classNames from "classnames";
 import { useMediaQuery } from "react-responsive";
 import Button from "@/ui/Button/Button";
+import Image from "next/image";
+import { useRef } from "react";
 
 interface IMealCard {
     meal: any;
@@ -13,9 +15,11 @@ interface IMealCard {
 }
 
 const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
-    // const dataArr: string[] = [];
-    // dataArr.push(meal?.strArea);
-    // dataArr.push(meal?.strCategory);
+    const imageRef = useRef<HTMLImageElement>(null)
+
+    const noImageHandler = () => {
+        imageRef.current.src = '/error.jpeg'
+    }
 
     // Media Queries
     const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
@@ -30,7 +34,13 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
                         })}
                 >
                     <a href={`/meals/${meal?.id}`}>
-                        <img src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} alt={meal?.title} />
+                        {/* <Image src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} width={312} height={231} alt={meal?.title}></Image> */}
+                        <img
+                            src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`}
+                            alt={meal?.title}
+                            onError={noImageHandler}
+                            ref={imageRef}
+                        />
                         {/* <img src={meal?.image} alt={meal?.title} /> */}
                         {/* <img src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} alt={meal?.title} /> */}
                     </a>

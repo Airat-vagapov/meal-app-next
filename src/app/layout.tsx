@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 
 import Header from "@/components/Header/Header";
-import Content from "@/ui/Content/Content";
 
 import { Mulish } from 'next/font/google'
 import "@/styles/global.sass";
