@@ -38,6 +38,7 @@ const SearchForm: React.FC<ISearchForm> = ({
 
     // API
     const [trigger, {data, isFetching, isError, error}] = useLazyGetMealsByNameQuery()
+    console.log('Search form error:', isError, error)
 
     // Formik
     const searchForm = useFormik({
@@ -52,11 +53,13 @@ const SearchForm: React.FC<ISearchForm> = ({
             values.number = 5
             try {
                 const data = await trigger(values).unwrap()
+                console.log('Search form data:', data)
                 setMealData(data?.results)
                 setIsDataReady(true)
                 setIsFetchError(false)
 
             } catch (err) {
+                console.log('Search form error:', err)
                 setIsFetchError(isError)
                 setFetchErrorData(error)
             }

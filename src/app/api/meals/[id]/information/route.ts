@@ -1,20 +1,16 @@
+import { mealsApiHandler } from "@/libs/apiHandler/apiHandler";
 import { NextRequest, NextResponse } from "next/server";
 
-const API_KEY = process.env.API_KEY;
-const API_URL = process.env.API_URL;
+const API_KEY = process.env.API_KEY!;
+const API_URL = process.env.API_URL!;
 
 export async function GET(
     request: NextRequest,
     { params }: { params: { id: string } },
 ) {
-    const { id } = await params;
+    const { id } = params;
     const searchParams = request.nextUrl.searchParams.toString();
+    const url = `${API_URL}/recipes/${id}/information/?apiKey=${API_KEY}&${searchParams}`;
 
-    const res = await fetch(
-        `${API_URL}/recipes/${id}/information/?apiKey=${API_KEY}&${searchParams}`,
-    );
-
-    const data = await res.json();
-
-    return NextResponse.json(data);
+    return mealsApiHandler(url);
 }
