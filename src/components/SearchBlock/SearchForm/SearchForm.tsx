@@ -5,7 +5,7 @@ import { FormikProps, useFormik } from "formik";
 
 import Input from "@/ui/Input/Input";
 
-import { useGetMealsByNameMutation } from '@/services/mealApi'
+import { useLazyGetMealsByNameQuery } from '@/services/mealApi'
 
 import styles from './SearchForm.module.sass';
 import classNames from "classnames";
@@ -37,7 +37,7 @@ const SearchForm: React.FC<ISearchForm> = ({
     const searchInputRef = useRef<HTMLInputElement | null>(null)
 
     // API
-    const [getMealsByName, { isLoading, isError, error }] = useGetMealsByNameMutation()
+    const [trigger, {data, isFetching, isError, error}] = useLazyGetMealsByNameQuery()
 
     // Formik
     const searchForm = useFormik({
@@ -51,7 +51,7 @@ const SearchForm: React.FC<ISearchForm> = ({
             values.offset = 0
             values.number = 5
             try {
-                const data = await getMealsByName(values).unwrap()
+                const data = await trigger(values).unwrap()
                 setMealData(data?.results)
                 setIsDataReady(true)
                 setIsFetchError(false)

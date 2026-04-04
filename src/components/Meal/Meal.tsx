@@ -66,6 +66,7 @@ const Meal = ({ id }: { id: string }) => {
     return (
         <>
             {isFetching && <Preloader />}
+
             <PageTitle title={data?.title} desc={data?.summary}></PageTitle>
             {data &&
                 <div className={styles.meal}>
