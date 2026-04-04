@@ -1,4 +1,4 @@
-const requrieEnv = (key: string): string => {
+const requireEnv = (key: string): string => {
     const value = process.env[key];
     if (!value) {
         throw new Error(
@@ -9,6 +9,6 @@ const requrieEnv = (key: string): string => {
 };
 
 export const env = {
-    API_KEY: requrieEnv("API_KEY"),
-    API_URL: requrieEnv("API_URL"),
+    API_KEY: requireEnv("API_KEY"),
+    API_URL: requireEnv("API_URL"),
 };
