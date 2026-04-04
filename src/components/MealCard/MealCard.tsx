@@ -15,23 +15,25 @@ interface IMealCard {
 }
 
 const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
-    const imageRef = useRef<HTMLImageElement>(null)
+    const imageRef = useRef<HTMLImageElement>(null);
 
     const noImageHandler = () => {
-        imageRef.current.src = '/error.jpeg'
-    }
+        if (imageRef.current) {
+            imageRef.current.src = "/error.jpeg";
+        }
+    };
 
     // Media Queries
     const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
     return (
         <>
             {meal && (
-                <div key={key}
-                    className={classNames(styles.mealCard,
-                        {
-                            [styles[`mealCard__${color}`]]: color,
-                            [styles[`mealCard--column`]]: column,
-                        })}
+                <div
+                    key={key}
+                    className={classNames(styles.mealCard, {
+                        [styles[`mealCard__${color}`]]: color,
+                        [styles[`mealCard--column`]]: column,
+                    })}
                 >
                     <a href={`/meals/${meal?.id}`}>
                         {/* <Image src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} width={312} height={231} alt={meal?.title}></Image> */}
@@ -45,7 +47,6 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
                         {/* <img src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} alt={meal?.title} /> */}
                     </a>
 
-
                     <div className={styles.mealCardContent}>
                         <a href={`/meals/${meal?.id}`}>
                             <p className={styles.mealTitle}>{meal?.title}</p>
@@ -53,16 +54,19 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
                         {/* {dataArr.length && <TagGroup data={dataArr} />} */}
 
                         <div className={styles.mealLink}>
-                            {isMobile ? <Button link={`/meals/${meal?.id}`}>Show more</Button> : <TextLink
-                                size={16}
-                                text="Show more"
-                                link={`/meals/${meal?.id}`}
-                            />}
-
+                            {isMobile ? (
+                                <Button link={`/meals/${meal?.id}`}>
+                                    Show more
+                                </Button>
+                            ) : (
+                                <TextLink
+                                    size={16}
+                                    text="Show more"
+                                    link={`/meals/${meal?.id}`}
+                                />
+                            )}
                         </div>
                     </div>
-
-
                 </div>
             )}
         </>
