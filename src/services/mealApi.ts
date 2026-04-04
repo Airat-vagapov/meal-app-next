@@ -1,20 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IMealSearchParams } from "@/types/meal";
 
-const mealSearchApi = createApi({
-    reducerPath: "mealSearchApi",
-    baseQuery: fetchBaseQuery({
-        baseUrl: "/api/meals/",
-    }),
-    endpoints: (build) => ({
-        getMealsByName: build.query<any, IMealSearchParams>({
-            query: (data) =>
-                `/search/?query=${data.search}&number=${data.number}&offset=${data.offset}`,
-        }),
-    }),
-    keepUnusedDataFor: 600,
-});
-
 const mealApi = createApi({
     reducerPath: "mealApi",
     baseQuery: fetchBaseQuery({
@@ -22,6 +8,10 @@ const mealApi = createApi({
     }),
     tagTypes: ["meal"],
     endpoints: (build) => ({
+        getMealsByName: build.query<any, IMealSearchParams>({
+            query: (data) =>
+                `/search/?query=${data.search}&number=${data.number}&offset=${data.offset}`,
+        }),
         getMealById: build.query<any, string>({
             query: (id) =>
                 `${id}/information/?addTasteData=true&addWinePairing=true`,
@@ -37,12 +27,10 @@ const mealApi = createApi({
     keepUnusedDataFor: 600,
 });
 
-export const { useGetMealsByNameQuery } = mealSearchApi;
-export const { useLazyGetMealsByNameQuery } = mealSearchApi;
-// export const { useFetchMealsByNameQuery } = mealSearchApi;
-
+export const { useGetMealsByNameQuery } = mealApi;
+export const { useLazyGetMealsByNameQuery } = mealApi;
 export const { useGetMealByIdQuery } = mealApi;
 export const { useGetSimilarMealByIdQuery } = mealApi;
 export const { useGetRandomMealsMutation } = mealApi;
 export const { getMealById } = mealApi.endpoints;
-export { mealSearchApi, mealApi };
+export { mealApi };

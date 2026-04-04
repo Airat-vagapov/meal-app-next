@@ -98,25 +98,6 @@ const SearchForm: React.FC<ISearchForm> = ({
                 }
                 }
                 value={searchForm.values.search} />
-            {/* <Input
-                inputType='hidden'
-                name='number'
-                id='number'
-                value={'10'}
-                onChange={(e) => {
-                    changeHandler(e, searchForm)
-                }}
-            />
-            <Input
-                inputType='hidden'
-                name='offset'
-                id='number'
-                value={'10'}
-                onChange={(e) => {
-                    changeHandler(e, searchForm)
-                }}
-
-            /> */}
         </form>
     )
 }
