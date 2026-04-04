@@ -28,8 +28,6 @@ const Search = () => {
     return (
         <div>
             <TabBlock data={tabData} name={""}></TabBlock>
-            {/* <div>Search</div>
-            <SearchBlock /> */}
         </div>
     )
 }

@@ -45,7 +45,6 @@ const MealList: React.FC<IMealList> = ({ searchParams }) => {
 
     // API
     const { data, isFetching } = useGetMealsByNameQuery(searchData);
-    console.log("Fetch data", data);
 
     return (
         <>
