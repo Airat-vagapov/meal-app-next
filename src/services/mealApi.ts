@@ -4,13 +4,13 @@ import { IMealSearchParams } from "@/types/meal";
 const mealApi = createApi({
     reducerPath: "mealApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "/api/meals",
+        baseUrl: "/api/meals/",
     }),
     tagTypes: ["meal"],
     endpoints: (build) => ({
         getMealsByName: build.query<any, IMealSearchParams>({
             query: (data) =>
-                `/search/?query=${data.search}&number=${data.number}&offset=${data.offset}`,
+                `search/?query=${data.search}&number=${data.number}&offset=${data.offset}`,
         }),
         getMealById: build.query<any, string>({
             query: (id) =>
@@ -21,7 +21,7 @@ const mealApi = createApi({
             query: (id) => `${id}/similar/?number=5&limitLicense=true`,
         }),
         getRandomMeals: build.query<any, string>({
-            query: (number) => `/random?limitLicense=true&number=${number}`,
+            query: (number) => `random?limitLicense=true&number=${number}`,
         }),
     }),
     keepUnusedDataFor: 600,
