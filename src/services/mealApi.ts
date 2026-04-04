@@ -4,7 +4,7 @@ import { IMealSearchParams } from "@/types/meal";
 const mealApi = createApi({
     reducerPath: "mealApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "/api/meals/",
+        baseUrl: "/api/meals",
     }),
     tagTypes: ["meal"],
     endpoints: (build) => ({
@@ -20,7 +20,7 @@ const mealApi = createApi({
         getSimilarMealById: build.query<any, string>({
             query: (id) => `${id}/similar/?number=5&limitLicense=true`,
         }),
-        getRandomMeals: build.mutation<any, string>({
+        getRandomMeals: build.query<any, string>({
             query: (number) => `/random?limitLicense=true&number=${number}`,
         }),
     }),
@@ -31,6 +31,6 @@ export const { useGetMealsByNameQuery } = mealApi;
 export const { useLazyGetMealsByNameQuery } = mealApi;
 export const { useGetMealByIdQuery } = mealApi;
 export const { useGetSimilarMealByIdQuery } = mealApi;
-export const { useGetRandomMealsMutation } = mealApi;
+export const { useLazyGetRandomMealsQuery } = mealApi;
 export const { getMealById } = mealApi.endpoints;
 export { mealApi };

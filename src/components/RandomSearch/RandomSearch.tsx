@@ -1,15 +1,15 @@
 import Input from "@/ui/Input/Input";
 import { useFormik } from "formik";
-import { useGetRandomMealsMutation } from "@/services/mealApi";
+import { useLazyGetRandomMealsQuery } from "@/services/mealApi";
 import Button from "@/ui/Button/Button";
 
 import styles from "./RandomSearch.module.sass";
 
 const RandomSearch = ({ setMealData }: { setMealData: (value: any) => void }) => {
     // API
-    const [getRandomMealsMutation, { isLoading, isError, error }] =
-        useGetRandomMealsMutation();
-
+    const [getRandomMeals, { isLoading, isError, error }] =
+        useLazyGetRandomMealsQuery();
+    
     // Formik
     const randomSearchForm = useFormik({
         initialValues: {
@@ -17,7 +17,7 @@ const RandomSearch = ({ setMealData }: { setMealData: (value: any) => void }) =>
         },
         onSubmit: async (values) => {
             try {
-                const data = await getRandomMealsMutation(
+                const data = await getRandomMeals(
                     values.randomMealsNumber
                 ).unwrap();
                 console.log(data);
