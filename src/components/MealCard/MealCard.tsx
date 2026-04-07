@@ -22,7 +22,6 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
             imageRef.current.src = "/error.jpeg";
         }
     };
-
     // Media Queries
     const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
     return (
@@ -48,7 +47,6 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
                         <a href={`/meals/${meal?.id}`}>
                             <p className={styles.mealTitle}>{meal?.title}</p>
                         </a>
-                        {/* {dataArr.length && <TagGroup data={dataArr} />} */}
 
                         <div className={styles.mealLink}>
                             {isMobile ? (

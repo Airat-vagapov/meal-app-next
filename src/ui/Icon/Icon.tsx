@@ -14,7 +14,6 @@ const Icon = ({ name, size, color }: IconProps) => {
                 [styles[`icon-s${size}`]]: size,
                 [styles[`icon-color-${color}`]]: color,
             })}>{name}</span>
-            {/* <span className='material-symbols-outlined icon'>{name}</span> */}
         </>
     )
 }

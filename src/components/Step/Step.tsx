@@ -8,7 +8,6 @@ const Step = ({ step }: { step: any }) => {
     return (
         <div className={styles.stepBlock} >
             <div className={styles.step__numberBlock}>
-                {/* <p className={styles.step__numberTitle}>Step</p> */}
                 <div className={styles.step__number}>
                     {isMobile && <p>Step</p>}
                     {step.number}
