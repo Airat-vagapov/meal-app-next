@@ -36,15 +36,12 @@ const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
                     })}
                 >
                     <a href={`/meals/${meal?.id}`}>
-                        {/* <Image src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} width={312} height={231} alt={meal?.title}></Image> */}
-                        <img
+                        <Image
                             src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`}
+                            width={312}
+                            height={231}
                             alt={meal?.title}
-                            onError={noImageHandler}
-                            ref={imageRef}
                         />
-                        {/* <img src={meal?.image} alt={meal?.title} /> */}
-                        {/* <img src={`https://img.spoonacular.com/recipes/${meal?.id}-312x231.jpg`} alt={meal?.title} /> */}
                     </a>
 
                     <div className={styles.mealCardContent}>
