@@ -6,7 +6,7 @@ const mealApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: "/api/meals/",
     }),
-    tagTypes: ["meal"]
+    tagTypes: ["meal"],
     endpoints: (build) => ({
         getMealsByName: build.query<any, IMealSearchParams>({
             query: (data) =>
