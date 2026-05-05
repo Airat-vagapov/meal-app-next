@@ -1,6 +1,5 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { useGetMealsByNameQuery } from "@/services/mealApi";
 import { IMealSearchParams, IMealCard } from "@/types/meal";
 
@@ -8,7 +7,6 @@ import MealCard from "@/components/MealCard/MealCard";
 
 import styles from "@/components/MealList/MealList.module.sass";
 import Pagination from "@/ui/Pagination/Pagination";
-import { useEffect, useState } from "react";
 import Preloader from "@/ui/Preloader/Preloader";
 
 interface IMealList {
@@ -16,30 +14,22 @@ interface IMealList {
 }
 
 const MealList: React.FC<IMealList> = ({ searchParams }) => {
-    // States
-    const [page, setPage] = useState<number>(0);
-    const [query, setQuery] = useState<string>("");
-
-    // Get URL params
-    useEffect(() => {
-        const searchQuery = searchParams.get("query") ?? "";
-        setQuery(searchQuery);
-        const pageData = Number(searchParams.get("page")) ?? 0;
-        setPage(pageData);
-    }, [searchParams]);
 
     const url = window.location.href;
 
     // Search data
     let searchOffset;
     let searchData: IMealSearchParams;
+    const page = Number(searchParams.get("page")) ?? 0;
     if (page > 0) {
         searchOffset = (page - 1) * 10;
     }
 
+    const searchQuery = searchParams.get("query") ?? "";
+
     searchData = {
-        search: "",
-        number: 12,
+        search: searchQuery,
+        number: 10,
         offset: searchOffset ?? 0,
     };
 
