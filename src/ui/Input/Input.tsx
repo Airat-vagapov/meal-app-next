@@ -1,74 +1,66 @@
-import { forwardRef, RefObject, useEffect, useRef } from 'react'
+import { forwardRef, RefObject, useEffect, useRef } from "react";
 
-import Icon from '@/ui/Icon/Icon'
+import Icon from "@/ui/Icon/Icon";
 
-import styles from './Input.module.sass'
-import { mergeRefs } from 'react-merge-refs';
+import styles from "./Input.module.sass";
+import { mergeRefs } from "react-merge-refs";
 
 interface IInput {
     inputType?: string;
     name: string;
     placeholder?: string;
     id: string;
-    value?: string ;
+    value?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = forwardRef<HTMLInputElement, IInput>((
-    { inputType = 'text', name, id, value, placeholder, onChange }, ref) => {
-    // Refs
-    const inputRef = useRef<HTMLInputElement>(null)
-    const clearInputBtnRef = useRef<HTMLDivElement>(null)
+const Input = forwardRef<HTMLInputElement, IInput>(
+    ({ inputType = "text", name, id, value, placeholder, onChange }, ref) => {
+        // Refs
+        const inputRef = useRef<HTMLInputElement>(null);
+        const clearInputBtnRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const clearButton = clearInputBtnRef.current
-        const input = inputRef.current
-        const inputChangeEvent = new Event('input', { bubbles: true })
+        useEffect(() => {
+            const clearButton = clearInputBtnRef.current;
+            const input = inputRef.current;
+            const inputChangeEvent = new Event("input", { bubbles: true });
 
+            // Clear input value
+            if (input && clearButton) {
+                const clearInputValue = () => {
+                    input.value = "";
+                    input.dispatchEvent(inputChangeEvent);
+                };
 
-        // Clear input value
-        if (input && clearButton) {
-            const clearInputValue = () => {
-                input.value = ''
-                input.dispatchEvent(inputChangeEvent)
+                clearButton.addEventListener("click", clearInputValue);
+
+                return () => {
+                    clearButton.removeEventListener("click", clearInputValue);
+                };
             }
+        }, []);
 
-            if (clearButton) {
-                clearButton.addEventListener('click', clearInputValue)
-            }
-        }
-
-
-        return () => {
-            if (clearButton) {
-                clearButton.removeEventListener('click', () => {
-
-                })
-            }
-        }
-    })
-
-
-
-    return (
-        <div className={styles.inputBlock}>
-            <input
-                className={styles.input}
-                ref={mergeRefs([ref, inputRef])}
-                type={inputType}
-                id={id}
-                placeholder={placeholder}
-                name={name}
-                value={value}
-                onChange={onChange} />
-            <div className={styles.inputClear} ref={clearInputBtnRef}>
-                <Icon name={'close'} />
+        return (
+            <div className={styles.inputBlock}>
+                <input
+                    className={styles.input}
+                    ref={mergeRefs([ref, inputRef])}
+                    type={inputType}
+                    id={id}
+                    placeholder={placeholder}
+                    name={name}
+                    value={value}
+                    onChange={onChange}
+                />
+                <div className={styles.inputClear} ref={clearInputBtnRef}>
+                    <Icon name={"close"} />
+                </div>
             </div>
-        </div>
-    );
-})
+        );
+    },
+);
 
 // Устанавливаем displayName для лучшей отладки
-Input.displayName = 'Input';
+Input.displayName = "Input";
 
 export default Input;
