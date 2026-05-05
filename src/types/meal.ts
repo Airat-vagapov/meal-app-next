@@ -17,3 +17,10 @@ export interface IMealSearchParams {
     number: number,
     offset: number
 }
+
+export interface IMealsSearchResult {
+    offset: number;
+    number: number;
+    totalResults: number;
+    results: IMealCard[];
+}

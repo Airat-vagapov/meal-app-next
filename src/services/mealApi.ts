@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IMealSearchParams } from "@/types/meal";
+import { IMealsSearchResult } from "@/types/meal";
 
 const mealApi = createApi({
     reducerPath: "mealApi",
@@ -8,7 +9,7 @@ const mealApi = createApi({
     }),
     tagTypes: ["meal"],
     endpoints: (build) => ({
-        getMealsByName: build.query<any, IMealSearchParams>({
+        getMealsByName: build.query<IMealsSearchResult, IMealSearchParams>({
             query: (data) =>
                 `search/?query=${data.search}&number=${data.number}&offset=${data.offset}`,
         }),
@@ -20,7 +21,7 @@ const mealApi = createApi({
         getSimilarMealById: build.query<any, string>({
             query: (id) => `${id}/similar/?number=5&limitLicense=true`,
         }),
-        getRandomMeals: build.query<any, string>({
+        getRandomMeals: build.query<IMealsSearchResult, number>({
             query: (number) => `random?limitLicense=true&number=${number}`,
         }),
     }),
