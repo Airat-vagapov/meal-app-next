@@ -6,12 +6,12 @@ import TextLink from "@/ui/TextLink/TextLink";
 import styles from '@/components/SearchBlock/SearchForm/SearchForm.module.sass'
 import Button from "@/ui/Button/Button";
 
-interface ISearchResultList {
+interface SearchResultListProps {
     data: any[] | undefined,
     searchQuery?: string,
 }
 
-const SearchResultList: React.FC<ISearchResultList> = ({ data, searchQuery }) => {
+const SearchResultList: React.FC<SearchResultListProps> = ({ data, searchQuery }) => {
     return (
         <>
             {data?.length

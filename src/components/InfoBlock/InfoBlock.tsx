@@ -1,12 +1,12 @@
 import Icon from '@/ui/Icon/Icon';
 import styles from './InfoBlock.module.sass'
 
-interface IInfoBlockProps {
+interface InfoBlockProps {
     title?: string;
     text?: string
 }
 
-const InfoBlock: React.FC<IInfoBlockProps> = ({ title, text }) => {
+const InfoBlock: React.FC<InfoBlockProps> = ({ title, text }) => {
     return (
         <div className={styles.infoBlock}>
             <Icon name={'error'} size={40} color={'red'} />

@@ -6,12 +6,12 @@ import ContentTable from "@/components/ContentTable/ContentTable";
 import IngredientList from "@/components/Ingredient/IngredientList/IngredientList";
 import Cooking from "@/components/Cooking/Cooking";
 
-import { ITabData } from "@/types/global";
-import { ITabContent } from "@/types/global";
+import { TabData } from "@/types/global";
+import { TabContentData } from "@/types/global";
 
 import styles from "@/components/TabBlock/TabBlock.module.sass";
 
-const TabBlock = ({ data }: ITabData) => {
+const TabBlock = ({ data }: TabData) => {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
@@ -60,7 +60,7 @@ const TabBlock = ({ data }: ITabData) => {
                                             item.data &&
                                             item.data.map(
                                                 (
-                                                    content: ITabContent,
+                                                    content: TabContentData,
                                                     contentIndex: number
                                                 ) => {
                                                     return (

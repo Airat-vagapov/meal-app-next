@@ -1,14 +1,14 @@
 import classNames from 'classnames';
 import styles from './Tab.module.sass'
 
-interface ITab {
+interface TabProps {
     children: React.ReactNode,
     onClick: () => void,
     index: number,
     activeTab: number
 }
 
-const Tab: React.FC<ITab> = ({ children, onClick, index, activeTab }) => {
+const Tab: React.FC<TabProps> = ({ children, onClick, index, activeTab }) => {
     return (
         <div onClick={onClick} className={
             classNames(styles.tab, {

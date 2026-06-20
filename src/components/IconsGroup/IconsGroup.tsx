@@ -1,15 +1,15 @@
 import Icon from '@/ui/Icon/Icon'
 import Score from '@/components/Score/Score'
 
-import { IMealInfoElement } from '@/types/meal'
+import { MealInfoElement } from '@/types/meal'
 
 import styles from './IconsGroup.module.sass'
 
-interface IIconsGroup {
-    data: IMealInfoElement[]
+interface IconsGroupProps {
+    data: MealInfoElement[]
 }
 
-const IconsGroup: React.FC<IIconsGroup> = ({ data }) => {
+const IconsGroup: React.FC<IconsGroupProps> = ({ data }) => {
     return (
         <div className={styles.iconGroup}>
             {data && data.map(({ name, value, icon, type }, index) => {

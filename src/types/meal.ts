@@ -1,26 +1,30 @@
-export interface IMealInfoElement {
+export interface MealInfoElement {
     name: string;
     value: string | number | boolean;
     icon?: string;
     type?: string;
 }
 
-export interface IMealCard {
+export interface MealCard {
     id: number;
     title: string;
     image: string;
     imageType: string;
 }
 
-export interface IMealSearchParams {
+export interface MealSearchParams {
     search: string,
     number: number,
     offset: number
 }
 
-export interface IMealsSearchResult {
+export interface MealsSearchResult {
     offset: number;
     number: number;
     totalResults: number;
-    results: IMealCard[];
+    results: MealCard[];
+}
+
+export interface RandomMealsResult {
+    recipes: MealCard[];
 }

@@ -8,7 +8,7 @@ import MealInfoCard from '@/components/Meal/MealInfoCard/MealInfoCard'
 import styles from '@/components/Meal/MealMainBlock/MealMainBlock.module.sass'
 import TabBlock from "@/components/TabBlock/TabBlock";
 
-import { ITabData } from '@/types/global';
+import { TabData } from '@/types/global';
 import SimilarMeals from "@/modules/SimilarMeals/SimilarMeals";
 import Preloader from "@/ui/Preloader/Preloader";
 
@@ -17,7 +17,7 @@ const Meal = ({ id }: { id: string }) => {
     // API
     const { data, isFetching, isLoading } = useGetMealByIdQuery(id)
 
-    const tabData: ITabData[] = [];
+    const tabData: TabData[] = [];
 
     // General dish info
     tabData.push({

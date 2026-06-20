@@ -2,10 +2,10 @@ import SearchBlock from "@/components/SearchBlock/SearchBlock";
 import RandomSearchBlock from '@/components/RandomSearch/RandomSearchBlock/RandomSearchBlock'
 import TabBlock from '@/components/TabBlock/TabBlock'
 
-import { ITabData } from '@/types/global';
+import { TabData } from '@/types/global';
 
 const Search = () => {
-    let tabData: ITabData[] = []
+    let tabData: TabData[] = []
 
     // Add search block
     tabData.push({

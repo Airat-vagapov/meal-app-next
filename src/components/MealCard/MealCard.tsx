@@ -7,14 +7,14 @@ import Button from "@/ui/Button/Button";
 import Image from "next/image";
 import { useRef } from "react";
 
-interface IMealCard {
+interface MealCardProps {
     meal: any;
     key?: string | number;
     color?: string;
     column?: boolean;
 }
 
-const MealCard: React.FC<IMealCard> = ({ key, meal, color, column }) => {
+const MealCard: React.FC<MealCardProps> = ({ key, meal, color, column }) => {
     const imageRef = useRef<HTMLImageElement>(null);
 
     const noImageHandler = () => {

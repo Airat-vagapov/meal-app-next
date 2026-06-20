@@ -3,13 +3,13 @@ import Link from "next/link";
 import styles from "./TextLink.module.sass";
 import classNames from "classnames";
 
-interface ITextLink {
+interface TextLinkProps {
     text: string;
     size: number;
     link: string;
 }
 
-const TextLink: React.FC<ITextLink> = ({ text, size, link }) => {
+const TextLink: React.FC<TextLinkProps> = ({ text, size, link }) => {
     return (
         <>
             <Link

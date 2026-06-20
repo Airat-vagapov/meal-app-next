@@ -18,7 +18,7 @@ const RandomSearch = ({ setMealData }: { setMealData: (value: any) => void }) =>
         onSubmit: async (values) => {
             try {
                 const data = await getRandomMeals(
-                    values.randomMealsNumber
+                    Number(values.randomMealsNumber)
                 ).unwrap();
                 console.log(data);
                 setMealData(data.recipes)

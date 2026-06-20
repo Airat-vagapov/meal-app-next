@@ -1,10 +1,15 @@
-export interface ITabData {
+export interface TabData {
     name: string;
     data: any[];
     type?: string;
 }
 
-export interface ITabContent {
+export interface TabContentData {
     name: string;
     data: any;
+}
+
+export interface HeaderMenuData {
+    name: string,
+    link: string,
 }

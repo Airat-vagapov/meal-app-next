@@ -16,7 +16,7 @@ interface FormValues {
     offset: number;
 }
 
-interface ISearchForm {
+interface SearchFormProps {
     toUp: boolean
     setMealData: (value: any) => void,
     setIsDataReady: (value: boolean) => void
@@ -25,7 +25,7 @@ interface ISearchForm {
     setSearchQuery: (value: string) => void,
 }
 
-const SearchForm: React.FC<ISearchForm> = ({
+const SearchForm: React.FC<SearchFormProps> = ({
     toUp,
     setMealData,
     setIsDataReady,

@@ -2,11 +2,11 @@ import Tag from '@/ui/Tag/Tag'
 import styles from './TagGroup.module.sass'
 
 
-interface ITagGroup {
+interface TagGroupProps {
     data: string[];
 }
 
-const TagGroup: React.FC<ITagGroup> = ({ data }) => {
+const TagGroup: React.FC<TagGroupProps> = ({ data }) => {
     return (
         <div className={styles.tagGroup}>
             {data && data.map((item, index) => (

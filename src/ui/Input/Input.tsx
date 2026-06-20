@@ -5,7 +5,7 @@ import Icon from "@/ui/Icon/Icon";
 import styles from "./Input.module.sass";
 import { mergeRefs } from "react-merge-refs";
 
-interface IInput {
+interface InputProps {
     inputType?: string;
     name: string;
     placeholder?: string;
@@ -14,7 +14,7 @@ interface IInput {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = forwardRef<HTMLInputElement, IInput>(
+const Input = forwardRef<HTMLInputElement, InputProps>(
     ({ inputType = "text", name, id, value, placeholder, onChange }, ref) => {
         // Refs
         const inputRef = useRef<HTMLInputElement>(null);

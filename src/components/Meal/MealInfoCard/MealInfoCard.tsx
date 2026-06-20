@@ -1,7 +1,7 @@
 import IconsGroup from '@/components/IconsGroup/IconsGroup';
 import styles from './MealInfoCard.module.sass';
 
-import { IMealInfoElement } from '@/types/meal'
+import { MealInfoElement } from '@/types/meal'
 
 type MealInfoCardProps = {
     healthScore: number;
@@ -37,7 +37,7 @@ const MealInfoCard = (
 ) => {
     
     // Create info data array
-    const scoresArr: IMealInfoElement[] = []
+    const scoresArr: MealInfoElement[] = []
     healthScore && scoresArr.push({
         'name': 'Health Score',
         'value': healthScore,
@@ -54,7 +54,7 @@ const MealInfoCard = (
         'type': 'score'
     })
 
-    const timesArr: IMealInfoElement[] = []
+    const timesArr: MealInfoElement[] = []
     readyInMinutes && timesArr.push({
         'name': 'Ready in',
         'value': `${readyInMinutes} min`,
@@ -71,7 +71,7 @@ const MealInfoCard = (
         'icon': 'timer',
     })
 
-    const infoData: IMealInfoElement[] = []
+    const infoData: MealInfoElement[] = []
     vegan && infoData.push({
         'name': 'Vegan',
         'value': vegan,
