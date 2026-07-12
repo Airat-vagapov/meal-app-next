@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mealler Soft Pantry Editorial — UI Kit и токены дизайн-системы.">
+  <title>Mealler UI Kit — Soft Pantry Editorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --canvas: #f5f2ea;
+      --surface: #fcfbf8;
+      --ink: #272521;
+      --muted: #6c6861;
+      --line: #d8d3c9;
+      --line-strong: #aca59a;
+      --primary: #3e3a5d;
+      --primary-hover: #302d4a;
+      --primary-soft: #e7e6ee;
+      --periwinkle: #7c7fae;
+      --sage: #dde5d2;
+      --peach: #edc7b5;
+      --danger: #b84a44;
+      --success: #55705a;
+      --focus: 0 0 0 3px rgba(124, 127, 174, .3);
+      --shadow: 0 18px 48px rgba(62, 58, 93, .12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--canvas); font: 16px/1.5 "Manrope", Arial, sans-serif; }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; }
+    :focus-visible { outline: none; box-shadow: var(--focus); }
+    .shell { width: min(100% - 64px, 1380px); margin-inline: auto; }
+    .header { position: sticky; z-index: 30; top: 0; border-bottom: 1px solid var(--line); background: rgba(245,242,234,.96); backdrop-filter: blur(14px); }
+    .header__inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font: 700 28px/1 "Fraunces", Georgia, serif; letter-spacing: -.04em; }
+    .brand::after { color: var(--periwinkle); content: "."; }
+    .header__right { display: flex; align-items: center; gap: 12px; }
+    .version { padding: 6px 9px; border-radius: 99px; color: #353c2e; background: var(--sage); font-size: 11px; font-weight: 700; }
+    .back { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-size: 14px; font-weight: 700; }
+    .hero { display: grid; grid-template-columns: 7fr 5fr; gap: 64px; padding: 72px 0 64px; border-bottom: 1px solid var(--line-strong); }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 { max-width: 880px; margin-bottom: 0; font: 700 clamp(56px, 7vw, 104px)/.92 "Fraunces", Georgia, serif; letter-spacing: -.045em; }
+    .hero__intro { align-self: end; padding-top: 28px; border-top: 1px solid var(--line-strong); }
+    .hero__intro p { max-width: 500px; color: var(--muted); font-size: 18px; }
+    .hero__meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .meta-chip { padding: 7px 10px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); font-size: 12px; }
+    .toc { position: sticky; z-index: 20; top: 72px; display: flex; gap: 8px; overflow: auto; padding: 12px 0; border-bottom: 1px solid var(--line); background: var(--canvas); scrollbar-width: none; }
+    .toc::-webkit-scrollbar { display: none; }
+    .toc a { min-height: 38px; display: inline-flex; align-items: center; padding: 0 13px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .toc a:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-soft); }
+    .section { padding: 64px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 136px; }
+    .section__head { display: grid; grid-template-columns: 4fr 8fr; gap: 32px; margin-bottom: 36px; }
+    .section__number { color: var(--periwinkle); font-size: 13px; font-weight: 700; }
+    .section h2 { margin: 0; font: 700 clamp(34px, 4vw, 56px)/1 "Fraunces", Georgia, serif; letter-spacing: -.035em; }
+    .section__copy { max-width: 640px; margin: 10px 0 0; color: var(--muted); }
+    .panel { min-width: 0; max-width: 100%; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .panel h3 { margin-bottom: 20px; font: 700 20px/1.2 "Manrope", sans-serif; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+
+    .swatches { display: grid; grid-template-columns: repeat(5, minmax(110px, 1fr)); gap: 12px; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .swatch__color { height: 104px; border-bottom: 1px solid var(--line); }
+    .swatch__info { padding: 12px; }
+    .swatch strong, .swatch code { display: block; }
+    .swatch strong { margin-bottom: 3px; font-size: 13px; }
+    .swatch code { color: var(--muted); font-size: 11px; }
+    .on-dark { color: white; }
+    .semantic-strip { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 20px; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; }
+    .semantic-strip div { min-height: 92px; padding: 16px; border-right: 1px solid var(--line); }
+    .semantic-strip div:last-child { border: 0; }
+    .semantic-strip strong, .semantic-strip span { display: block; }
+    .semantic-strip span { margin-top: 3px; font-size: 12px; opacity: .72; }
+
+    .type-specimen { display: grid; gap: 0; }
+    .type-row { display: grid; grid-template-columns: 170px 1fr; gap: 28px; align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .type-row:last-child { border: 0; }
+    .type-meta { color: var(--muted); font-size: 12px; }
+    .display { font: 700 clamp(52px, 7vw, 96px)/.92 "Fraunces", Georgia, serif; letter-spacing: -.045em; }
+    .h1 { font: 700 clamp(42px, 5vw, 64px)/.98 "Fraunces", Georgia, serif; letter-spacing: -.035em; }
+    .h2 { font: 700 40px/1.05 "Fraunces", Georgia, serif; }
+    .h3 { font: 700 24px/1.2 "Manrope", sans-serif; }
+    .body-lg { max-width: 680px; font-size: 18px; line-height: 1.65; }
+    .body { max-width: 680px; }
+    .label { font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+
+    .spacing-scale { display: flex; align-items: end; gap: 18px; overflow: auto; padding-bottom: 10px; }
+    .space { min-width: 64px; text-align: center; }
+    .space__bar { width: 100%; margin-bottom: 8px; border-radius: 6px 6px 0 0; background: var(--primary-soft); border: 1px solid var(--periwinkle); }
+    .space code { font-size: 11px; }
+    .radius-grid { display: flex; flex-wrap: wrap; gap: 24px; }
+    .radius { width: 128px; }
+    .radius__shape { height: 92px; margin-bottom: 8px; border: 1px solid var(--line-strong); background: var(--surface); }
+    .radius code { color: var(--muted); font-size: 11px; }
+    .shadow-demo { height: 120px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 18px; background: #edeae2; }
+    .shadow-card { width: 170px; height: 70px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: var(--shadow); font-size: 12px; font-weight: 700; }
+
+    .state-table { width: 100%; border-collapse: collapse; }
+    .state-table th, .state-table td { padding: 13px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+    .state-table th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+    .state-table tr:last-child td { border: 0; }
+    .btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 18px; border: 1px solid var(--line-strong); border-radius: 10px; background: transparent; font-size: 13px; font-weight: 700; transition: 160ms ease; }
+    .btn:hover, .btn.is-hover { background: #f0ede6; }
+    .btn:active { transform: translateY(1px); }
+    .btn--primary { border-color: var(--primary); color: white; background: var(--primary); }
+    .btn--primary:hover, .btn--primary.is-hover { border-color: var(--primary-hover); background: var(--primary-hover); }
+    .btn--secondary { border-color: var(--periwinkle); color: var(--primary); background: var(--primary-soft); }
+    .btn--ghost { border-color: transparent; color: var(--primary); }
+    .btn--danger { border-color: var(--danger); color: white; background: var(--danger); }
+    .btn.is-focus { box-shadow: var(--focus); }
+    .btn:disabled, .btn.is-disabled { border-color: var(--line); color: #959087; background: #eeece6; cursor: not-allowed; }
+    .spinner { width: 16px; height: 16px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .field { display: grid; gap: 7px; }
+    .field label { font-size: 13px; font-weight: 700; }
+    .input { width: 100%; height: 48px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); }
+    .input:hover { border-color: var(--periwinkle); }
+    .input:focus, .input.is-focus { outline: 0; border-color: var(--periwinkle); box-shadow: var(--focus); }
+    .input.is-error { border-color: var(--danger); }
+    .input:disabled { color: #99948b; background: #eeece6; }
+    .helper { color: var(--muted); font-size: 12px; }
+    .helper--error { color: var(--danger); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { min-height: 34px; padding: 0 11px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); font-size: 12px; font-weight: 600; }
+    .chip:hover { border-color: var(--periwinkle); }
+    .chip.is-selected { border-color: var(--periwinkle); color: var(--primary); background: var(--primary-soft); }
+    .chip.is-diet { border-color: #b8c5aa; color: #3d503f; background: var(--sage); }
+    .check { min-height: 44px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+    .check input { width: 18px; height: 18px; accent-color: var(--primary); }
+
+    .recipe-card { max-width: 330px; }
+    .recipe-card__image { position: relative; aspect-ratio: 4/3; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; }
+    .recipe-card__image img { width: 100%; height: 100%; object-fit: cover; }
+    .match { position: absolute; top: 9px; left: 9px; padding: 5px 8px; border-radius: 6px; color: #353c2e; background: rgba(221,229,210,.95); font-size: 11px; font-weight: 700; }
+    .save { position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 10px; color: var(--primary); background: rgba(252,251,248,.94); }
+    .save svg { width: 19px; }
+    .recipe-card h3 { margin: 12px 0 4px; font: 700 21px/1.12 "Fraunces", Georgia, serif; }
+    .recipe-card p { color: var(--muted); font-size: 13px; }
+
+    .nav-demo { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .nav-demo__links { display: flex; gap: 22px; font-size: 12px; font-weight: 600; }
+    .nav-demo__links .active { color: var(--primary); text-decoration: underline; text-underline-offset: 7px; }
+    .mobile-nav { max-width: 360px; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line-strong); border-radius: 14px; background: var(--surface); overflow: hidden; }
+    .mobile-nav button { min-height: 64px; display: grid; place-items: center; gap: 2px; border: 0; background: transparent; font-size: 10px; }
+    .mobile-nav button.active { color: var(--primary); background: var(--primary-soft); }
+    .mobile-nav svg { width: 19px; }
+
+    .feedback-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feedback { min-height: 240px; display: grid; place-items: center; align-content: center; padding: 24px; border: 1px solid var(--line); border-radius: 14px; text-align: center; }
+    .feedback svg { width: 48px; height: 48px; margin-bottom: 14px; color: var(--primary); }
+    .feedback h3 { margin-bottom: 6px; font: 700 21px "Fraunces", serif; }
+    .feedback p { color: var(--muted); font-size: 13px; }
+    .feedback--error { border-color: #d7aaa6; }
+    .feedback--error svg, .feedback--error h3 { color: var(--danger); }
+    .skeleton { width: 100%; }
+    .skeleton__image, .skeleton__line { background: linear-gradient(90deg,#e2dfd7 25%,#f1efe9 50%,#e2dfd7 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
+    .skeleton__image { aspect-ratio: 4/3; border-radius: 14px; }
+    .skeleton__line { height: 14px; margin-top: 12px; border-radius: 5px; }
+    .skeleton__line:last-child { width: 66%; }
+    @keyframes shimmer { to { background-position: -200% 0; } }
+    .toast-demo { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
+    .toast-demo__check { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; color: white; background: var(--success); font-size: 12px; }
+
+    .modal-preview { position: relative; min-height: 420px; display: grid; place-items: center; overflow: hidden; border-radius: 18px; background: rgba(39,37,33,.48); }
+    .sheet { width: min(480px, calc(100% - 32px)); overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--canvas); box-shadow: var(--shadow); }
+    .sheet__head, .sheet__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px; }
+    .sheet__head { border-bottom: 1px solid var(--line); }
+    .sheet__head h3 { margin: 0; font: 700 24px "Fraunces", serif; }
+    .sheet__body { display: grid; gap: 22px; padding: 20px; }
+    .sheet__foot { border-top: 1px solid var(--line); }
+    .sheet__foot .btn:last-child { min-width: 160px; }
+    .open-demo { margin-top: 16px; }
+    .live-modal { position: fixed; z-index: 100; inset: 0; display: none; place-items: center; padding: 20px; background: rgba(39,37,33,.56); }
+    .live-modal.is-open { display: grid; }
+
+    .footer { padding: 44px 0; color: #e7e3dc; background: var(--ink); }
+    .footer__inner { display: flex; justify-content: space-between; gap: 24px; }
+    .footer .brand { color: white; }
+    .footer p { margin: 0; font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .shell { width: calc(100% - 40px); }
+      .hero { grid-template-columns: 1fr; gap: 36px; }
+      .section__head { grid-template-columns: 1fr; gap: 6px; }
+      .swatches { grid-template-columns: repeat(3, 1fr); }
+      .grid-3, .feedback-grid { grid-template-columns: 1fr 1fr; }
+      .state-table { display: block; overflow-x: auto; }
+    }
+    @media (max-width: 620px) {
+      .shell { width: calc(100% - 32px); }
+      .header__inner { min-height: 64px; }
+      .version { display: none; }
+      .hero { padding: 48px 0; }
+      .hero h1 { font-size: clamp(48px, 15vw, 68px); }
+      .toc { top: 64px; }
+      .section { padding: 48px 0; }
+      .panel { padding: 20px; }
+      .grid-2, .grid-3, .form-grid, .feedback-grid { min-width: 0; grid-template-columns: minmax(0, 1fr); }
+      .swatches { grid-template-columns: 1fr 1fr; }
+      .semantic-strip { grid-template-columns: 1fr 1fr; }
+      .semantic-strip div:nth-child(2) { border-right: 0; }
+      .semantic-strip div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .type-row { grid-template-columns: 1fr; gap: 10px; }
+      .nav-demo { align-items: flex-start; }
+      .nav-demo__links { display: grid; gap: 8px; }
+      .live-modal { align-items: end; padding: 0; }
+      .live-modal .sheet { width: 100%; border-radius: 18px 18px 0 0; }
+      .footer__inner { display: grid; }
+    }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="shell header__inner">
+      <a class="brand" href="index.html">Mealler</a>
+      <div class="header__right"><span class="version">Soft Pantry 1.0</span><a class="back" href="index.html">View prototype <span aria-hidden="true">→</span></a></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell hero">
+      <h1>Soft Pantry Editorial.</h1>
+      <div class="hero__intro"><p>A quiet, tactile design system for recipe discovery: warm enough to feel human, disciplined enough to make cooking effortless.</p><div class="hero__meta"><span class="meta-chip">WCAG AA</span><span class="meta-chip">8px rhythm</span><span class="meta-chip">Mobile first</span><span class="meta-chip">No acid colors</span></div></div>
+    </div>
+
+    <nav class="shell toc" aria-label="Разделы UI Kit"><a href="#colors">Colors</a><a href="#type">Typography</a><a href="#layout">Layout</a><a href="#actions">Actions</a><a href="#forms">Forms</a><a href="#content">Content</a><a href="#navigation">Navigation</a><a href="#feedback">Feedback</a><a href="#overlays">Overlays</a></nav>
+
+    <section class="section" id="colors"><div class="shell"><div class="section__head"><div><span class="section__number">01 / FOUNDATIONS</span><h2>Color system</h2></div><p class="section__copy">The palette is built around oat, porcelain and blueberry. Sage and peach add food warmth without turning functional states into neon signals.</p></div>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch__color" style="background:#F5F2EA"></div><div class="swatch__info"><strong>Oat canvas</strong><code>#F5F2EA</code></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#FCFBF8"></div><div class="swatch__info"><strong>Porcelain</strong><code>#FCFBF8</code></div></div>
+        <div class="swatch"><div class="swatch__color on-dark" style="background:#272521"></div><div class="swatch__info"><strong>Cocoa ink</strong><code>#272521</code></div></div>
+        <div class="swatch"><div class="swatch__color on-dark" style="background:#3E3A5D"></div><div class="swatch__info"><strong>Blueberry</strong><code>#3E3A5D</code></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#7C7FAE"></div><div class="swatch__info"><strong>Periwinkle</strong><code>#7C7FAE</code></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#DDE5D2"></div><div class="swatch__info"><strong>Sage</strong><code>#DDE5D2</code></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#EDC7B5"></div><div class="swatch__info"><strong>Peach</strong><code>#EDC7B5</code></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#D8D3C9"></div><div class="swatch__info"><strong>Flour line</strong><code>#D8D3C9</code></div></div>
+        <div class="swatch"><div class="swatch__color on-dark" style="background:#B84A44"></div><div class="swatch__info"><strong>Tomato error</strong><code>#B84A44</code></div></div>
+        <div class="swatch"><div class="swatch__color on-dark" style="background:#55705A"></div><div class="swatch__info"><strong>Herb success</strong><code>#55705A</code></div></div>
+      </div>
+      <div class="semantic-strip"><div style="color:white;background:#3E3A5D"><strong>Primary action</strong><span>White on blueberry</span></div><div style="background:#E7E6EE"><strong>Selected</strong><span>Blueberry on soft periwinkle</span></div><div style="background:#DDE5D2"><strong>Diet / success</strong><span>Text plus color</span></div><div style="background:#EDC7B5"><strong>Warm highlight</strong><span>Secondary attention</span></div></div>
+    </div></section>
+
+    <section class="section" id="type"><div class="shell"><div class="section__head"><div><span class="section__number">02 / FOUNDATIONS</span><h2>Typography</h2></div><p class="section__copy">Fraunces gives recipe titles an editorial voice; Manrope keeps controls, ingredients and instructions precise. Both differ completely from the previous product typography.</p></div>
+      <div class="panel type-specimen">
+        <div class="type-row"><div class="type-meta">Display / Fraunces 700<br>96 / 88</div><div class="display">Cook with feeling.</div></div>
+        <div class="type-row"><div class="type-meta">H1 / Fraunces 700<br>64 / 63</div><div class="h1">Creamy lemon pasta</div></div>
+        <div class="type-row"><div class="type-meta">H2 / Fraunces 700<br>40 / 42</div><div class="h2">Curated for you</div></div>
+        <div class="type-row"><div class="type-meta">H3 / Manrope 700<br>24 / 29</div><div class="h3">Ingredients</div></div>
+        <div class="type-row"><div class="type-meta">Body large / Manrope 400<br>18 / 30</div><div class="body-lg">Bright, creamy and ready in 25 minutes. This lemon pasta is made for busy weeknights.</div></div>
+        <div class="type-row"><div class="type-meta">Body / Manrope 400<br>16 / 24</div><div class="body">Reserve half a cup of pasta water before draining. It gives the sauce its silky texture.</div></div>
+        <div class="type-row"><div class="type-meta">Label / Manrope 700<br>13 / 18</div><div class="label">COOKING TIME · 25 MINUTES</div></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="layout"><div class="shell"><div class="section__head"><div><span class="section__number">03 / FOUNDATIONS</span><h2>Layout & shape</h2></div><p class="section__copy">A 12-column desktop grid and 4-column mobile grid share an 8px rhythm. Curves are calm and controlled; shadows belong only to floating layers.</p></div>
+      <div class="grid-2">
+        <div class="panel"><h3>Spacing · 8px base</h3><div class="spacing-scale">
+          <div class="space"><div class="space__bar" style="height:8px"></div><code>8</code></div><div class="space"><div class="space__bar" style="height:16px"></div><code>16</code></div><div class="space"><div class="space__bar" style="height:24px"></div><code>24</code></div><div class="space"><div class="space__bar" style="height:32px"></div><code>32</code></div><div class="space"><div class="space__bar" style="height:48px"></div><code>48</code></div><div class="space"><div class="space__bar" style="height:64px"></div><code>64</code></div><div class="space"><div class="space__bar" style="height:80px"></div><code>80</code></div>
+        </div></div>
+        <div class="panel"><h3>Radii</h3><div class="radius-grid"><div class="radius"><div class="radius__shape" style="border-radius:10px"></div><strong>Control</strong><br><code>10px</code></div><div class="radius"><div class="radius__shape" style="border-radius:14px"></div><strong>Media</strong><br><code>14px</code></div><div class="radius"><div class="radius__shape" style="border-radius:18px"></div><strong>Overlay</strong><br><code>18px</code></div></div></div>
+        <div class="panel"><h3>Grid</h3><p>Desktop: 12 columns, 24px gap, maximum content width 1380px.<br>Tablet: 8 columns, 20px gap.<br>Mobile: 4 columns, 16px gap and gutters.</p></div>
+        <div class="panel"><h3>Elevation</h3><div class="shadow-demo"><div class="shadow-card">Overlay shadow</div></div></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="actions"><div class="shell"><div class="section__head"><div><span class="section__number">04 / COMPONENTS</span><h2>Buttons & actions</h2></div><p class="section__copy">One primary action per region. Hover deepens the color; pressed moves only 1px; focus remains visible without shifting layout.</p></div>
+      <div class="panel"><table class="state-table"><thead><tr><th>Variant</th><th>Default</th><th>Hover</th><th>Focus</th><th>Disabled</th><th>Loading</th></tr></thead><tbody>
+        <tr><td>Primary</td><td><button class="btn btn--primary">Find recipes</button></td><td><button class="btn btn--primary is-hover">Find recipes</button></td><td><button class="btn btn--primary is-focus">Find recipes</button></td><td><button class="btn btn--primary" disabled>Find recipes</button></td><td><button class="btn btn--primary"><span class="spinner"></span>Loading</button></td></tr>
+        <tr><td>Secondary</td><td><button class="btn btn--secondary">Surprise me</button></td><td><button class="btn btn--secondary is-hover">Surprise me</button></td><td><button class="btn btn--secondary is-focus">Surprise me</button></td><td><button class="btn" disabled>Surprise me</button></td><td><button class="btn btn--secondary"><span class="spinner"></span>Loading</button></td></tr>
+        <tr><td>Ghost</td><td><button class="btn btn--ghost">View all</button></td><td><button class="btn btn--ghost is-hover">View all</button></td><td><button class="btn btn--ghost is-focus">View all</button></td><td><button class="btn" disabled>View all</button></td><td>—</td></tr>
+        <tr><td>Danger</td><td><button class="btn btn--danger">Remove</button></td><td><button class="btn btn--danger">Remove</button></td><td><button class="btn btn--danger is-focus">Remove</button></td><td><button class="btn" disabled>Remove</button></td><td><button class="btn btn--danger"><span class="spinner"></span>Removing</button></td></tr>
+      </tbody></table></div>
+    </div></section>
+
+    <section class="section" id="forms"><div class="shell"><div class="section__head"><div><span class="section__number">05 / COMPONENTS</span><h2>Forms & filters</h2></div><p class="section__copy">Labels never disappear into placeholders. Errors explain recovery. Filter chips remain textual and large enough to tap.</p></div>
+      <div class="grid-2">
+        <div class="panel"><h3>Input states</h3><div class="form-grid">
+          <div class="field"><label for="field-default">Default</label><input class="input" id="field-default" placeholder="Search recipes"><span class="helper">Dish, ingredient or cuisine</span></div>
+          <div class="field"><label for="field-focus">Focus</label><input class="input is-focus" id="field-focus" value="pasta"><span class="helper">6 suggestions available</span></div>
+          <div class="field"><label for="field-error">Error</label><input class="input is-error" id="field-error" value=""><span class="helper helper--error">Enter at least two characters.</span></div>
+          <div class="field"><label for="field-disabled">Disabled</label><input class="input" id="field-disabled" value="Unavailable" disabled><span class="helper">Search is temporarily unavailable</span></div>
+        </div></div>
+        <div class="panel"><h3>Filter chips</h3><div class="chips"><button class="chip">Italian</button><button class="chip is-selected">Vegetarian ×</button><button class="chip is-diet">High protein</button><button class="chip">Under 30 min</button><button class="chip" disabled>Unavailable</button></div><h3 style="margin-top:30px">Selection controls</h3><div><label class="check"><input type="checkbox">Unchecked ingredient</label><br><label class="check"><input type="checkbox" checked>Checked ingredient</label></div></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="content"><div class="shell"><div class="section__head"><div><span class="section__number">06 / COMPONENTS</span><h2>Recipe content</h2></div><p class="section__copy">Photography carries appetite; typography carries trust. Cards avoid heavy containers and keep title, time and difficulty easy to scan.</p></div>
+      <div class="grid-3">
+        <div class="panel"><h3>Recipe card</h3><article class="recipe-card"><div class="recipe-card__image"><img src="https://img.spoonacular.com/recipes/716429-636x393.jpg" alt="Creamy lemon pasta"><span class="match">92% match</span><button class="save" aria-label="Сохранить рецепт"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z"/></svg></button></div><h3>Creamy lemon pasta</h3><p>25 min · Easy · Vegetarian</p></article></div>
+        <div class="panel"><h3>Ingredient row</h3><label class="check"><input type="checkbox"><span><strong>200 g</strong> spaghetti</span></label><label class="check"><input type="checkbox" checked><span><strong>1</strong> lemon, zest and juice</span></label><label class="check"><input type="checkbox"><span><strong>40 g</strong> parmesan</span></label><label class="check"><input type="checkbox"><span><strong>2 tbsp</strong> olive oil</span></label></div>
+        <div class="panel"><h3>Method step</h3><div style="display:grid;grid-template-columns:36px 1fr;gap:12px"><span style="width:32px;height:32px;display:grid;place-items:center;border-radius:50%;color:white;background:var(--primary);font-weight:700">3</span><div><strong>Add lemon and cream</strong><p style="margin-top:8px;color:var(--muted)">Stir gently over low heat until the sauce is smooth and fragrant.</p></div></div></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="navigation"><div class="shell"><div class="section__head"><div><span class="section__number">07 / COMPONENTS</span><h2>Navigation</h2></div><p class="section__copy">Desktop navigation stays quiet and persistent. Mobile reduces top-level destinations to Discover, Recipes and Saved.</p></div>
+      <div class="grid-2"><div class="panel"><h3>Desktop header</h3><div class="nav-demo"><span class="brand">Mealler</span><div class="nav-demo__links"><span class="active">Discover</span><span>Recipes</span><span>Favorites</span><span>Collections</span></div></div></div><div class="panel"><h3>Mobile bottom navigation</h3><div class="mobile-nav"><button class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>Discover</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/></svg>Recipes</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Saved</button></div></div></div>
+    </div></section>
+
+    <section class="section" id="feedback"><div class="shell"><div class="section__head"><div><span class="section__number">08 / PATTERNS</span><h2>Loading & feedback</h2></div><p class="section__copy">Every wait, dead end and failure explains what happened and what the cook can do next.</p></div>
+      <div class="feedback-grid">
+        <div class="feedback"><div class="skeleton"><div class="skeleton__image"></div><div class="skeleton__line"></div><div class="skeleton__line"></div></div></div>
+        <div class="feedback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M4 20h6"/></svg><h3>No recipes found</h3><p>Try removing a filter or using a broader ingredient.</p><button class="btn">Clear filters</button></div>
+        <div class="feedback feedback--error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9v5M12 18h.01"/></svg><h3>Something went wrong</h3><p>We couldn't load recipes. Please try again.</p><button class="btn btn--danger">Try again</button></div>
+      </div>
+      <div class="panel" style="margin-top:20px"><h3>Toast</h3><div class="toast-demo"><span class="toast-demo__check">✓</span><span><strong>Recipe saved</strong><br><small style="color:var(--muted)">Added to Favorites</small></span></div><button class="btn btn--secondary open-demo" id="show-toast">Replay feedback</button></div>
+    </div></section>
+
+    <section class="section" id="overlays"><div class="shell"><div class="section__head"><div><span class="section__number">09 / PATTERNS</span><h2>Modal & sheet</h2></div><p class="section__copy">The same filter content appears as a centered modal on desktop and a bottom sheet on mobile. Escape and scrim click always close it.</p></div>
+      <div class="modal-preview"><div class="sheet"><div class="sheet__head"><h3>Filters</h3><span>×</span></div><div class="sheet__body"><div><strong>Cuisine</strong><div class="chips" style="margin-top:10px"><button class="chip is-selected">Italian</button><button class="chip">Asian</button><button class="chip">Mexican</button></div></div><div><strong>Cooking time</strong><div class="chips" style="margin-top:10px"><button class="chip">Any</button><button class="chip is-selected">Under 30 min</button><button class="chip">45 min</button></div></div></div><div class="sheet__foot"><button class="btn">Clear all</button><button class="btn btn--primary">Apply filters</button></div></div></div>
+      <button class="btn btn--primary open-demo" id="open-modal">Open interactive modal</button>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div class="shell footer__inner"><span class="brand">Mealler</span><p>Soft Pantry Editorial · Design system 1.0<br>Built for real kitchens and quiet confidence.</p></div></footer>
+
+  <div class="live-modal" id="live-modal" role="dialog" aria-modal="true" aria-labelledby="live-title"><div class="sheet"><div class="sheet__head"><h3 id="live-title">Filters</h3><button class="btn btn--ghost" id="close-modal" aria-label="Закрыть">Close</button></div><div class="sheet__body"><div><strong>Cuisine</strong><div class="chips" style="margin-top:10px"><button class="chip is-selected">Italian</button><button class="chip">Asian</button><button class="chip">Mediterranean</button></div></div><div><strong>Diet</strong><div class="chips" style="margin-top:10px"><button class="chip">All</button><button class="chip is-selected">Vegetarian</button><button class="chip">Vegan</button></div></div></div><div class="sheet__foot"><button class="btn">Clear all</button><button class="btn btn--primary" id="apply-modal">Apply filters</button></div></div></div>
+
+  <script>
+    const modal = document.getElementById('live-modal');
+    let modalTrigger = null;
+    const openModal = () => { modalTrigger = document.activeElement; modal.classList.add('is-open'); document.body.style.overflow = 'hidden'; setTimeout(() => document.getElementById('close-modal').focus(), 20); };
+    const closeModal = () => { if (!modal.classList.contains('is-open')) return; modal.classList.remove('is-open'); document.body.style.overflow = ''; modalTrigger?.focus(); };
+    document.getElementById('open-modal').addEventListener('click', openModal);
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+    document.getElementById('apply-modal').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeModal();
+      if (event.key === 'Tab' && modal.classList.contains('is-open')) {
+        const controls = [...modal.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled])')];
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+    document.addEventListener('click', event => {
+      if (event.target.classList.contains('chip') && !event.target.disabled) {
+        const pressed = event.target.classList.toggle('is-selected');
+        event.target.setAttribute('aria-pressed', String(pressed));
+      }
+    });
+    document.getElementById('show-toast').addEventListener('click', () => { const toast = document.querySelector('.toast-demo'); toast.animate([{transform:'translateY(8px)',opacity:.2},{transform:'translateY(0)',opacity:1}],{duration:260,easing:'ease-out'}); });
+    document.querySelectorAll('.chip').forEach(chip => chip.setAttribute('aria-pressed', String(chip.classList.contains('is-selected'))));
+  </script>
+</body>
+</html>
