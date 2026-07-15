@@ -13,3 +13,9 @@ export interface HeaderMenuData {
     name: string,
     link: string,
 }
+
+export interface HeaderControlItem {
+    name: string,
+    link: string,
+    icon: string,
+}

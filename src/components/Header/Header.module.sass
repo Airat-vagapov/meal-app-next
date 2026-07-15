@@ -4,13 +4,37 @@
 .header
     width: 100%
     padding: 12px 0
+    display: flex
+    justify-content: space-between
+    align-items: center
+
     &Title
         @include font-display
         font-size: 40px
         line-height: 48px
-        margin: 0 auto
         text-align: center
+        width: fit-content
     a
         @include transition
         &:hover
-         @include orangeTextHover
+        @include orangeTextHover
+
+    &Menu
+        margin: 0 auto
+
+    &Control
+        display: flex
+        align-items: center
+        gap: $s-2
+
+        &Elem
+            width: 44px
+            height: 44px
+            display: flex
+            justify-content: center
+            align-items: center
+            &:hover
+                @include control-surface
+            a
+                width: 100%
+                text-align: center

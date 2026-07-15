@@ -31,6 +31,7 @@
     color: $button-primary-text
     background-color: $button-primary-bg
     border: 1px solid $button-primary-bg
+    border-radius: $button-radius
     @include transition
 
     &:hover:not(:disabled)
@@ -50,6 +51,7 @@
     color: $button-secondary-text
     background-color: $button-secondary-bg
     border: 1px solid $color-focus
+    border-radius: $button-radius
     @include transition
 
     &:hover:not(:disabled)
@@ -67,6 +69,7 @@
     color: $color-text-on-primary
     background-color: $button-danger-bg
     border: 1px solid $button-danger-bg
+    border-radius: $button-radius
     @include transition
 
     &:focus-visible
@@ -79,6 +82,7 @@
     color: $control-text
     background-color: $control-bg
     border: 1px solid $control-border
+    border-radius: $control-radius
     @include transition((border-color, box-shadow, background-color))
 
     &::placeholder
@@ -98,6 +102,7 @@
     color: $color-text
     background-color: $card-bg
     border: 1px solid $card-border
+    border-radius: $card-radius
 
 @mixin interactive-text
     color: $link-text
@@ -113,11 +118,13 @@
     color: $tag-text
     background-color: $tag-bg
     border: 1px solid $color-focus
+    border-radius: $tag-radius
 
 @mixin tag-success
     color: $tag-success-text
     background-color: $tag-success-bg
     border: 1px solid rgba($color-success, .35)
+    border-radius: $tag-radius
 
 // Старые имена оставлены для совместимости; цвета берутся из семантики выше.
 @mixin orangeTextHover
