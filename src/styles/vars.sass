@@ -1,57 +1,80 @@
-// Цвета
-$neutral-0: #FFFFFF
-$neutral-50: #FAFAF6
-$neutral-100: #F3F2EC
-$neutral-200: #E7E5DC
-$neutral-300: #D2D0C5
-$neutral-400: #A6A498
-$neutral-500: #76746A
-$neutral-600: #4F4E47
-$neutral-700: #34332E
-$neutral-800: #1F1E1B
+// Примитивы: базовая палитра из редизайн
+$pantry-oat: #F5F2EA
+$pantry-paper: #FCFBF8
+$pantry-ink: #272521
+$pantry-stone: #6C6861
+$pantry-line: #D8D3C9
+$pantry-line-strong: #ACA59A
+$pantry-aubergine: #3E3A5D
+$pantry-aubergine-deep: #302D4A
+$pantry-lilac-soft: #E7E6EE
+$pantry-periwinkle: #7C7FAE
+$pantry-sage: #DDE5D2
+$pantry-peach: #EDC7B5
+$pantry-danger: #B84A44
+$pantry-success: #55705A
+$pantry-disabled: #EEECE6
+$pantry-disabled-ink: #959087
 
-$green-50: #EDF6F0
-$green-100: #D4EADC
-$green-200: #A9D5B8
-$green-300: #7CBE93
-$green-400: #4FA771
-$green-500: #2D7A4E
-$green-600: #246240
-$green-700: #1B4A30
-$green-800: #133421
+// Семантические цвета: основной API для разметки и новых компонентов
+$color-canvas: $pantry-oat
+$color-surface: $pantry-paper
+$color-text: $pantry-ink
+$color-text-muted: $pantry-stone
+$color-text-on-primary: #FFFFFF
+$color-border: $pantry-line
+$color-border-strong: $pantry-line-strong
+$color-primary: $pantry-aubergine
+$color-primary-hover: $pantry-aubergine-deep
+$color-primary-soft: $pantry-lilac-soft
+$color-focus: $pantry-periwinkle
+$color-accent-soft: $pantry-peach
+$color-success: $pantry-success
+$color-success-soft: $pantry-sage
+$color-danger: $pantry-danger
+$color-danger-soft: #F5E3E1
+$color-disabled: $pantry-disabled
+$color-disabled-text: $pantry-disabled-ink
+$color-overlay: rgba($pantry-ink, .56)
 
-$accent-red-50: #FBEEEA
-$accent-red-100: #F6D6CC
-$accent-red-200: #EDA999
-$accent-red-300: #E68B75
-$accent-red-400: #E26244
-$accent-red-500: #C44E33
-$accent-red-600: #9B3D28
-$accent-red-700: #71291B
-
-// Семантические цвета
-$danger: #BF3D3D
-$danger-bg: #FBE8E8
-$warning: #C88719
-$warning-bg: #FBF0DA
-$success: $green-500
-$success-bg: $green-50
+// Компонентные цвета: позволяют менять тему без обхода CSS-классов
+$button-primary-bg: $color-primary
+$button-primary-bg-hover: $color-primary-hover
+$button-primary-text: $color-text-on-primary
+$button-secondary-bg: $color-primary-soft
+$button-secondary-text: $color-primary
+$button-danger-bg: $color-danger
+$control-bg: $color-surface
+$control-text: $color-text
+$control-placeholder: $color-text-muted
+$control-border: $color-border-strong
+$control-border-hover: $color-focus
+$control-border-focus: $color-focus
+$card-bg: $color-surface
+$card-border: $color-border
+$tag-bg: $color-primary-soft
+$tag-text: $color-primary
+$tag-success-bg: $color-success-soft
+$tag-success-text: #3D503F
+$link-text: $color-primary
+$link-text-hover: $color-primary-hover
 
 // Шрифты
-$font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif
-$font-mono: 'JetBrains Mono', ui-monospace, monospace
+$font-display: 'Fraunces', Georgia, serif
+$font-sans: 'Manrope', Arial, sans-serif
+$font-mono: ui-monospace, monospace
 
 // Типографика
 $fs-xs: 12px
 $fs-sm: 14px
 $fs-body: 16px
 $fs-h4: 18px
-$fs-h3: 20px
-$fs-h2: 24px
-$fs-h1: 32px
-$fs-display: 40px
+$fs-h3: 24px
+$fs-h2: 40px
+$fs-h1: 64px
+$fs-display: 96px
 
-// Отступы
+// Отступы — базовый ритм 8px
 $s-1: 4px
 $s-2: 8px
 $s-3: 12px
@@ -60,31 +83,72 @@ $s-5: 24px
 $s-6: 32px
 $s-7: 48px
 $s-8: 64px
+$s-9: 80px
+$s-10: 96px
 
 // Радиусы
-$r-sm: 6px
+$r-sm: 10px
 $r-md: 10px
-$r-lg: 16px
-$r-xl: 24px
+$r-lg: 14px
+$r-xl: 18px
 $r-pill: 999px
 
 // Тени
-$shadow-1: 0 1px 2px rgba(31, 30, 27, 0.06)
-$shadow-2: 0 2px 6px rgba(31, 30, 27, 0.06), 0 1px 2px rgba(31, 30, 27, 0.04)
-$shadow-3: 0 6px 16px rgba(31, 30, 27, 0.08), 0 2px 4px rgba(31, 30, 27, 0.04)
-$shadow-focus: 0 0 0 3px rgba(45, 122, 78, 0.25)
+$shadow-1: 0 1px 2px rgba($pantry-ink, .06)
+$shadow-2: 0 2px 6px rgba($pantry-ink, .06), 0 1px 2px rgba($pantry-ink, .04)
+$shadow-3: 0 18px 48px rgba($pantry-aubergine, .12)
+$shadow-focus: 0 0 0 3px rgba($pantry-periwinkle, .30)
 
 // Анимация
-$dur-fast: 120ms
-$dur-base: 180ms
-$ease-out: cubic-bezier(0.2, 0.8, 0.2, 1)
+$dur-press: 100ms
+$dur-fast: 160ms
+$dur-base: 220ms
+$ease-out: cubic-bezier(.2, .8, .2, 1)
 
-// Старые названия
-$base-white: $neutral-0
-$gray: $neutral-50
-$light-gray: $neutral-400
-$orange: $accent-red-400
-$orange-hover: $accent-red-500
-$dark-gray: $neutral-700
-$dark-gray2: $neutral-800
-$red: $danger
+// Совместимость со старыми компонентами.
+// Благодаря этим алиасам существующие классы сразу используют новый UI kit.
+$neutral-0: $color-surface
+$neutral-50: $color-canvas
+$neutral-100: $color-disabled
+$neutral-200: $color-primary-soft
+$neutral-300: $color-border
+$neutral-400: $color-border-strong
+$neutral-500: $color-text-muted
+$neutral-600: $color-text-muted
+$neutral-700: $color-text
+$neutral-800: $color-text
+
+$green-50: $color-success-soft
+$green-100: $color-success-soft
+$green-200: $color-success-soft
+$green-300: $color-success
+$green-400: $color-success
+$green-500: $color-primary
+$green-600: $color-primary-hover
+$green-700: $color-primary-hover
+$green-800: $color-text
+
+$accent-red-50: $color-danger-soft
+$accent-red-100: $color-danger-soft
+$accent-red-200: $color-accent-soft
+$accent-red-300: $color-accent-soft
+$accent-red-400: $color-primary
+$accent-red-500: $color-primary-hover
+$accent-red-600: $color-danger
+$accent-red-700: $color-danger
+
+$danger: $color-danger
+$danger-bg: $color-danger-soft
+$warning: $color-primary
+$warning-bg: $color-accent-soft
+$success: $color-success
+$success-bg: $color-success-soft
+
+$base-white: $color-surface
+$gray: $color-canvas
+$light-gray: $color-text-muted
+$orange: $color-primary
+$orange-hover: $color-primary-hover
+$dark-gray: $color-text
+$dark-gray2: $color-text
+$red: $color-danger

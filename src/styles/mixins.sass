@@ -1,14 +1,136 @@
-@mixin transition
-    transition: all .3s ease
+// Базовые интерактивные состояния
+@mixin transition($properties: (color, background-color, border-color, box-shadow, transform))
+    transition-property: $properties
+    transition-duration: $dur-fast
+    transition-timing-function: ease-out
 
+@mixin focus-ring
+    outline: none
+    box-shadow: $shadow-focus
+
+@mixin disabled-state
+    color: $color-disabled-text
+    background-color: $color-disabled
+    border-color: $color-border
+    cursor: not-allowed
+    pointer-events: none
+
+// Готовые цветовые схемы компонентов. Подключение одного миксина назначает
+// default, hover, focus, active и disabled без цветов в классе компонента.
+@mixin button-primary
+    color: $button-primary-text
+    background-color: $button-primary-bg
+    border: 1px solid $button-primary-bg
+    @include transition
+
+    &:hover:not(:disabled)
+        background-color: $button-primary-bg-hover
+        border-color: $button-primary-bg-hover
+
+    &:focus-visible
+        @include focus-ring
+
+    &:active:not(:disabled)
+        transform: translateY(1px)
+
+    &:disabled
+        @include disabled-state
+
+@mixin button-secondary
+    color: $button-secondary-text
+    background-color: $button-secondary-bg
+    border: 1px solid $color-focus
+    @include transition
+
+    &:hover:not(:disabled)
+        color: $button-primary-text
+        background-color: $button-primary-bg
+        border-color: $button-primary-bg
+
+    &:focus-visible
+        @include focus-ring
+
+    &:disabled
+        @include disabled-state
+
+@mixin button-danger
+    color: $color-text-on-primary
+    background-color: $button-danger-bg
+    border: 1px solid $button-danger-bg
+    @include transition
+
+    &:focus-visible
+        @include focus-ring
+
+    &:disabled
+        @include disabled-state
+
+@mixin control-surface
+    color: $control-text
+    background-color: $control-bg
+    border: 1px solid $control-border
+    @include transition((border-color, box-shadow, background-color))
+
+    &::placeholder
+        color: $control-placeholder
+
+    &:hover:not(:disabled)
+        border-color: $control-border-hover
+
+    &:focus-visible
+        border-color: $control-border-focus
+        @include focus-ring
+
+    &:disabled
+        @include disabled-state
+
+@mixin card-surface
+    color: $color-text
+    background-color: $card-bg
+    border: 1px solid $card-border
+
+@mixin interactive-text
+    color: $link-text
+    @include transition(color)
+
+    &:hover
+        color: $link-text-hover
+
+    &:focus-visible
+        @include focus-ring
+
+@mixin tag-primary
+    color: $tag-text
+    background-color: $tag-bg
+    border: 1px solid $color-focus
+
+@mixin tag-success
+    color: $tag-success-text
+    background-color: $tag-success-bg
+    border: 1px solid rgba($color-success, .35)
+
+// Старые имена оставлены для совместимости; цвета берутся из семантики выше.
 @mixin orangeTextHover
-    color: $orange-hover
-    transition: all .3s ease
+    color: $link-text-hover
+    @include transition(color)
 
 @mixin orangeBgHover
-    background-color: $orange-hover
-    transition: all .3s ease
+    background-color: $button-primary-bg-hover
+    @include transition(background-color)
 
+@mixin greenTextHover
+    color: $link-text-hover
+    @include transition(color)
+
+@mixin greenBorderHover
+    border-color: $control-border-hover
+    @include transition(border-color)
+
+@mixin greenBgHover
+    background-color: $button-primary-bg-hover
+    @include transition(background-color)
+
+// Breakpoints
 @mixin xs
     @media (max-width: 374px)
         @content
