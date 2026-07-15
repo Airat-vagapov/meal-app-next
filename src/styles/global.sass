@@ -3,6 +3,8 @@
 @import '/src/styles/mixins.sass'
 
 :root
+    --font-interface: var(--font-manrope)
+    --font-editorial: var(--font-fraunces)
     --color-canvas: #{$color-canvas}
     --color-surface: #{$color-surface}
     --color-ink: #{$color-text}
@@ -31,7 +33,7 @@ html
 body
     color: $color-text
     background-color: $color-canvas
-    font-family: var(--font-mulish)
+    font-family: $font-sans
     font-size: $fs-body
     font-weight: 400
     line-height: 22px
@@ -39,6 +41,16 @@ body
     height: 100%
     position: relative
     display: block
+
+h1,
+h2
+    font-family: $font-display
+
+button,
+input,
+select,
+textarea
+    font: inherit
 
 input
     outline: none

@@ -15,6 +15,16 @@
     cursor: not-allowed
     pointer-events: none
 
+// Типографические роли из UI kit
+@mixin font-display($weight: 700)
+    font-family: $font-display
+    font-weight: $weight
+    letter-spacing: -.035em
+
+@mixin font-interface($weight: 400)
+    font-family: $font-sans
+    font-weight: $weight
+
 // Готовые цветовые схемы компонентов. Подключение одного миксина назначает
 // default, hover, focus, active и disabled без цветов в классе компонента.
 @mixin button-primary

@@ -3,12 +3,21 @@ import type { Metadata } from "next";
 
 import Header from "@/components/Header/Header";
 
-import { Mulish } from 'next/font/google'
+import { Fraunces, Manrope } from 'next/font/google'
 import "@/styles/global.sass";
 
-const mulish = Mulish({
+const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
-  weight: ['400', '600', '700']
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-manrope',
+  display: 'swap'
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-fraunces',
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -22,14 +31,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${manrope.variable} ${fraunces.variable}`}>
 
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
         <meta name="theme-color" content="#000000" />
       </head>
-      <body className={mulish.className}>
+      <body>
         <Header />
           {children}
       </body>
