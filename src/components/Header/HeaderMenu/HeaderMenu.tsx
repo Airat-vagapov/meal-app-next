@@ -1,27 +1,46 @@
+"use client";
+
 import { HeaderMenuData } from "@/types/global";
 import styles from "@/components/Header/Header.module.sass";
 import Link from "next/link";
-import Icon from "@/ui/Icon/Icon";
+import Button from "@/ui/Button/Button";
+import { useState } from "react";
+import Container from "@/components/Container/Container";
 
 interface HeaderMenuProps {
     menuData: HeaderMenuData[];
 }
 
 const HeaderMenu: React.FC<HeaderMenuProps> = ({ menuData }) => {
+    const [burgerIsOpen, setBurgerIsOpen] = useState(false);
+
     return (
         <>
-            <div className={styles.headerMenu}>
+            <div className={`${styles.headerMenu} ${styles.desktopHeaderMenu}`}>
                 {menuData.map((item) => (
                     <Link key={item.link} href={item.link}>
                         {item.name}
                     </Link>
                 ))}
             </div>
+            <Button
+                btnStyle={"icon"}
+                onClick={() => setBurgerIsOpen(!burgerIsOpen)}
+            />
 
-            
-            <button>
-                <Icon name={`menu`}></Icon>
-            </button>
+            <div
+                className={`${styles.burgerMenu} ${burgerIsOpen ? styles.burgerMenuOpen : ""}`}
+            >
+                <Container>
+                    <div className={styles.burgerMenuList}>
+                        {menuData.map((item) => (
+                            <Link key={item.link} href={item.link}>
+                                {item.name}
+                            </Link>
+                        ))}
+                    </div>
+                </Container>
+            </div>
         </>
     );
 };

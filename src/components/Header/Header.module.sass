@@ -11,16 +11,10 @@
     &Divider
         border-bottom: 1px solid $color-border
 
-    &Title
-        @include font-display
-        font-size: 40px
-        line-height: 48px
-        text-align: center
-        width: fit-content
-    a
-        @include transition
-        &:hover
-            @include link-hover-state
+    &Actions
+        display: flex
+        align-items: center
+        gap: $s-4
 
     &Menu
         margin: 0 auto
@@ -33,6 +27,11 @@
             @include transition
             &:hover
                 @include link-hover-state
+
+        &.desktopHeaderMenu
+            display: none
+            @include lg
+                display: flex
 
     &Control
         display: flex
@@ -63,3 +62,19 @@
                 display: inline-flex
                 justify-content: center
                 align-items: center
+
+.burgerMenu
+    position: fixed
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    top: 72px
+    left: 0
+    z-index: 10
+    &Open
+        opacity: 1
+        visibility: visible
+        pointer-events: auto
+    &List
+        dipslay: flex
+        flex-direction: column

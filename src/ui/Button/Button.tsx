@@ -1,12 +1,41 @@
-import styles from './Button.module.sass'
+import Link from "next/link";
+import Icon from "../Icon/Icon";
+import styles from "./Button.module.sass";
 
-const Button = ({ type, children, link }: { type?: "button" | "submit" | "reset", children: React.ReactNode, link?: string }) => {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    btnStyle?: string;
+    type?: "button" | "submit" | "reset";
+    children?: React.ReactNode;
+    link?: string;
+};
+
+const Button: React.FC<ButtonProps> = ({
+    btnStyle,
+    type,
+    children,
+    link,
+    ...buttonProps
+}) => {
     return (
         <>
-            {link ? <a href={link} className={styles.button}>{children}</a> : <button type={type} className={styles.button}>{children}</button>}
+            {link ? (
+                <Link href={link} className={styles.button}>
+                    {children}
+                </Link>
+            ) : (
+                <button
+                    {...buttonProps}
+                    type={type}
+                    className={
+                        btnStyle === "icon" ? styles.iconButton : styles.button
+                    }
+                >
+                    {btnStyle === "icon" && <Icon name="menu" />}
+                    {children}
+                </button>
+            )}
         </>
-
-    )
+    );
 };
 
 export default Button;

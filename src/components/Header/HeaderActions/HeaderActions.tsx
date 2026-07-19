@@ -3,6 +3,8 @@ import HeaderMenu from "../HeaderMenu/HeaderMenu";
 
 import { HeaderMenuData } from "@/types/global";
 
+import styles from "@/components/Header/Header.module.sass";
+
 const HeaderActions = () => {
     const menuData: HeaderMenuData[] = [
         {
@@ -23,10 +25,10 @@ const HeaderActions = () => {
         },
     ];
     return (
-        <>
+        <div className={styles.headerActions}>
             <HeaderMenu menuData={menuData}></HeaderMenu>
             <HeaderControl></HeaderControl>
-        </>
+        </div>
     );
 };
 
