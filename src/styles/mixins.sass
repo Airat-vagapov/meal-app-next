@@ -164,20 +164,20 @@
 // если правила пересекаются: @include lg, затем @include md, @include sm, @include xs.
 // Очень узкие телефоны: ширина viewport до 374px включительно.
 @mixin xs
-    @media (max-width: 374px)
+    @media (min-width: 375px)
         @content
 
 // Телефоны и небольшие планшеты: ширина viewport до 767px включительно.
 @mixin sm
-    @media (max-width: 767px)
+    @media (min-width: 768px)
         @content
 
 // Планшеты и небольшие ноутбуки: ширина viewport до 991px включительно.
 @mixin md
-    @media (max-width: 991px)
+    @media (min-width: 992px)
         @content
 
 // Экраны меньше desktop: ширина viewport до 1199px включительно.
 @mixin lg
-    @media (max-width: 1199px)
+    @media (min-width: 1200px)
         @content
