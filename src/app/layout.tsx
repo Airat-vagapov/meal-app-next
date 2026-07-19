@@ -3,20 +3,20 @@ import type { Metadata } from "next";
 
 import Header from "@/components/Header/Header";
 
-import { Fraunces, Manrope } from 'next/font/google'
+import { Literata, Onest } from 'next/font/google'
 import "@/styles/global.sass";
 
-const manrope = Manrope({
+const onest = Onest({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-manrope',
+  variable: '--font-onest',
   display: 'swap'
 });
 
-const fraunces = Fraunces({
-  subsets: ['latin'],
+const literata = Literata({
+  subsets: ['latin', 'cyrillic'],
   weight: ['600', '700', '800'],
-  variable: '--font-fraunces',
+  variable: '--font-literata',
   display: 'swap'
 });
 
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${onest.variable} ${literata.variable}`}>
 
       <head>
         <link rel="manifest" href="/manifest.json" />

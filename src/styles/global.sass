@@ -3,8 +3,8 @@
 @import '/src/styles/mixins.sass'
 
 :root
-    --font-interface: var(--font-manrope)
-    --font-editorial: var(--font-fraunces)
+    --font-interface: var(--font-onest)
+    --font-editorial: var(--font-literata)
     --radius-control: #{$radius-control}
     --radius-media: #{$radius-media}
     --radius-overlay: #{$radius-overlay}
@@ -41,7 +41,7 @@ body
     font-size: $fs-body
     font-weight: 400
     line-height: 22px
-    letter-spacing: -0.02em
+    letter-spacing: 0
     height: 100%
     position: relative
     display: block
@@ -70,7 +70,7 @@ a
         cursor: pointer
         @include transition
         &:hover
-            @include greenTextHover
+            @include link-hover-state
         &.disabled
             cursor: none
             pointer-events: none
@@ -79,10 +79,10 @@ a
     p
         @include transition
     p:hover
-        @include orangeTextHover
+        @include link-hover-state
 
 div.link
     cursor: pointer
     @include transition
     &:hover
-        @include orangeTextHover
+        @include link-hover-state
