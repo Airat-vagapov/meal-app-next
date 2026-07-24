@@ -73,6 +73,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ menuData }) => {
                                 className={styles.burgerMenuItem}
                                 key={item.link}
                                 href={item.link}
+                                onClick={() => setBurgerIsOpen(false)}
                             >
                                 {item.name}
                             </Link>
