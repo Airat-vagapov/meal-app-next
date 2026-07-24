@@ -16,6 +16,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ menuData }) => {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
 
     const burgerMenuRef = useRef<HTMLDivElement>(null);
+    const burgerButtonRef = useRef<HTMLButtonElement>(null);
 
     const pathnmame = usePathname();
 
@@ -24,8 +25,9 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ menuData }) => {
             const target = event.target as Node;
 
             const clickedInsideMenu = burgerMenuRef.current?.contains(target);
+            const clickBurgerButton = burgerButtonRef.current?.contains(target);
 
-            if (!clickedInsideMenu) {
+            if (!clickedInsideMenu && !clickBurgerButton) {
                 setBurgerIsOpen(false);
             }
         };
@@ -36,8 +38,6 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ menuData }) => {
             document.removeEventListener("pointerdown", handleClickOutside);
         };
     }, [burgerIsOpen]);
-
-    console.log(burgerMenuRef.current);
 
     return (
         <>
@@ -56,6 +56,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ menuData }) => {
                 ))}
             </div>
             <Button
+                ref={burgerButtonRef}
                 className={`showMobile ${styles.headerControlElem}`}
                 btnStyle={"icon"}
                 onClick={() => setBurgerIsOpen((prev) => !prev)}
