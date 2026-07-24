@@ -7,7 +7,7 @@
   <title>Mealler — Cook something worth remembering</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Literata:wght@600;700;800&amp;family=Onest:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --canvas: #f5f2ea;
@@ -46,7 +46,7 @@
       min-width: 320px;
       color: var(--ink);
       background: var(--canvas);
-      font-family: "Manrope", Arial, sans-serif;
+      font-family: "Onest", Arial, sans-serif;
       font-size: 16px;
       line-height: 1.5;
     }
@@ -93,10 +93,10 @@
       border: 0;
       padding: 0;
       background: none;
-      font-family: "Fraunces", Arial, sans-serif;
+      font-family: "Literata", Georgia, serif;
       font-size: 30px;
       font-weight: 700;
-      letter-spacing: -.045em;
+      letter-spacing: -.02em;
       cursor: pointer;
     }
     .brand::after { content: "."; color: var(--blue); }
@@ -156,7 +156,7 @@
       border-radius: 99px;
       color: var(--signal-ink);
       background: var(--signal);
-      font: 700 10px/1 "Manrope", sans-serif;
+      font: 700 10px/1 "Onest", sans-serif;
     }
     .menu-btn { display: none; }
 
@@ -176,11 +176,11 @@
     .hero__title {
       max-width: 850px;
       margin: 0;
-      font-family: "Fraunces", Arial, sans-serif;
+      font-family: "Literata", Georgia, serif;
       font-size: clamp(56px, 7.1vw, 112px);
       font-weight: 700;
       line-height: .93;
-      letter-spacing: -.045em;
+      letter-spacing: -.02em;
     }
     .hero__title .dot { color: #7c7fae; }
     .hero__last { white-space: nowrap; }
@@ -278,9 +278,9 @@
     .section__head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
     .section__title, .page-title {
       margin: 0;
-      font-family: "Fraunces", Arial, sans-serif;
+      font-family: "Literata", Georgia, serif;
       font-weight: 800;
-      letter-spacing: -.045em;
+      letter-spacing: -.02em;
     }
     .section__title { font-size: clamp(32px, 4vw, 54px); line-height: .95; }
     .text-link {
@@ -318,7 +318,7 @@
       margin: 0 0 4px;
       border: 0;
       background: none;
-      font-family: "Fraunces", Arial, sans-serif;
+      font-family: "Literata", Georgia, serif;
       font-size: 20px;
       font-weight: 700;
       line-height: 1.1;
@@ -348,7 +348,7 @@
     .category:hover { color: white; background: var(--blue); }
     .category__icon { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; }
     .category__icon svg { width: 20px; height: 20px; }
-    .category strong { display: block; font-family: "Fraunces", sans-serif; font-size: 17px; }
+    .category strong { display: block; font-family: "Literata", Georgia, serif; font-size: 17px; }
     .category small { color: var(--muted); }
     .category:hover small { color: rgba(255,255,255,.72); }
     .category__arrow { font-size: 22px; }
@@ -357,9 +357,9 @@
     .decision__block { position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 38px; overflow: hidden; }
     .decision__block:first-child { color: var(--ink); background: var(--peach); }
     .decision__block:last-child { color: var(--ink); background: #d8d9e6; }
-    .decision h2 { max-width: 430px; margin: 0; font: 800 clamp(34px, 4vw, 58px)/.94 "Fraunces", sans-serif; letter-spacing: -.05em; }
+    .decision h2 { max-width: 430px; margin: 0; font: 800 clamp(34px, 4vw, 58px)/.94 "Literata", Georgia, serif; letter-spacing: -.02em; }
     .decision .btn { width: max-content; margin-top: 24px; }
-    .decision__mark { position: absolute; right: 32px; bottom: -34px; font: 900 180px/1 "Fraunces", sans-serif; opacity: .14; }
+    .decision__mark { position: absolute; right: 32px; bottom: -34px; font: 800 180px/1 "Literata", Georgia, serif; opacity: .14; }
 
     .page-head { padding: 58px 0 32px; border-bottom: 1px solid var(--line-strong); }
     .page-title { font-size: clamp(52px, 7vw, 94px); line-height: .9; }
@@ -426,7 +426,7 @@
       text-align: center;
     }
     .state-panel svg { width: 58px; height: 58px; margin: 0 auto 18px; }
-    .state-panel h2 { margin: 0 0 8px; font: 800 28px/1 "Fraunces", sans-serif; }
+    .state-panel h2 { margin: 0 0 8px; font: 800 28px/1 "Literata", Georgia, serif; }
     .state-panel p { max-width: 420px; margin: 0 auto 22px; color: var(--muted); }
     .state-panel--error { border-color: var(--danger); color: var(--danger); }
     .state-panel--error p { color: var(--ink); }
@@ -442,7 +442,7 @@
     .detail__top { padding: 28px 0 18px; }
     .back { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; border: 0; color: var(--blue); background: none; font-weight: 700; cursor: pointer; }
     .detail__head { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; margin-top: 16px; }
-    .detail__title { max-width: 1020px; margin: 0; font: 700 clamp(50px, 7vw, 92px)/.94 "Fraunces", Georgia, serif; letter-spacing: -.045em; }
+    .detail__title { max-width: 1020px; margin: 0; font: 700 clamp(50px, 7vw, 92px)/.94 "Literata", Georgia, serif; letter-spacing: -.02em; }
     .detail__actions { display: flex; gap: 8px; }
     .detail__metrics { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 22px; font-size: 14px; font-weight: 600; }
     .metric { display: flex; align-items: center; gap: 7px; }
@@ -453,7 +453,7 @@
     .detail__content { display: grid; grid-template-columns: 3fr 4fr 5fr; border-bottom: 1px solid var(--line-strong); }
     .detail__column { padding: 32px; border-right: 1px solid var(--line); }
     .detail__column:last-child { border-right: 0; }
-    .detail__column h2 { margin: 0 0 24px; font: 800 26px/1 "Fraunces", sans-serif; }
+    .detail__column h2 { margin: 0 0 24px; font: 800 26px/1 "Literata", Georgia, serif; }
     .detail__intro { font-size: 18px; line-height: 1.6; }
     .fact-list { display: grid; gap: 14px; margin-top: 30px; color: var(--muted); font-size: 14px; }
     .fact { display: flex; align-items: center; gap: 10px; }
@@ -492,7 +492,7 @@
     .modal__panel { width: min(620px, 100%); max-height: min(760px, calc(100dvh - 48px)); overflow: auto; border: 1px solid var(--line-strong); background: var(--canvas); box-shadow: var(--shadow-float); animation: modal-in 220ms ease; }
     @keyframes modal-in { from { opacity: 0; transform: translateY(14px); } }
     .modal__head { position: sticky; z-index: 2; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--line-strong); background: var(--canvas); }
-    .modal__head h2 { margin: 0; font: 800 28px/1 "Fraunces", sans-serif; }
+    .modal__head h2 { margin: 0; font: 800 28px/1 "Literata", Georgia, serif; }
     .modal__body { display: grid; gap: 28px; padding: 24px; }
     .filter-group { border: 0; padding: 0; margin: 0; }
     .filter-group legend { margin-bottom: 12px; font-weight: 700; }
@@ -501,8 +501,8 @@
     .modal__foot .btn:last-child { min-width: 180px; }
     .cooking-panel { width: min(760px, 100%); }
     .cooking-step { padding: 32px 24px 10px; }
-    .cooking-step__number { color: var(--blue); font: 700 14px "Manrope", sans-serif; }
-    .cooking-step h2 { max-width: 620px; margin: 14px 0; font: 800 clamp(32px, 5vw, 56px)/1 "Fraunces", sans-serif; letter-spacing: -.04em; }
+    .cooking-step__number { color: var(--blue); font: 700 14px "Onest", sans-serif; }
+    .cooking-step h2 { max-width: 620px; margin: 14px 0; font: 800 clamp(32px, 5vw, 56px)/1 "Literata", Georgia, serif; letter-spacing: -.02em; }
     .progress { height: 5px; background: var(--line); }
     .progress__bar { width: 16.66%; height: 100%; background: var(--blue); transition: width 240ms ease; }
 

@@ -60,8 +60,8 @@ $link-text: $color-primary
 $link-text-hover: $color-primary-hover
 
 // Шрифты
-$font-display: 'Fraunces', Georgia, serif
-$font-sans: 'Manrope', Arial, sans-serif
+$font-display: var(--font-literata), 'Literata', Georgia, serif
+$font-sans: var(--font-onest), 'Onest', Arial, sans-serif
 $font-mono: ui-monospace, monospace
 
 // Типографика
@@ -86,12 +86,26 @@ $s-8: 64px
 $s-9: 80px
 $s-10: 96px
 
-// Радиусы
-$r-sm: 10px
-$r-md: 10px
-$r-lg: 14px
-$r-xl: 18px
-$r-pill: 999px
+// Радиусы: семантические роли из UI kit
+$radius-control: 10px
+$radius-media: 14px
+$radius-overlay: 18px
+$radius-pill: 999px
+
+// Компонентные радиусы
+$button-radius: $radius-control
+$control-radius: $radius-control
+$card-radius: $radius-media
+$media-radius: $radius-media
+$overlay-radius: $radius-overlay
+$tag-radius: $radius-pill
+
+// Совместимость со старыми именами
+$r-sm: $radius-control
+$r-md: $radius-control
+$r-lg: $radius-media
+$r-xl: $radius-overlay
+$r-pill: $radius-pill
 
 // Тени
 $shadow-1: 0 1px 2px rgba($pantry-ink, .06)

@@ -1,13 +1,19 @@
 // Базовые интерактивные состояния
+// Использовать на элементах, свойства которых меняются при hover/focus/active.
+// Без аргумента анимирует стандартный набор; для одного свойства: @include transition(color).
 @mixin transition($properties: (color, background-color, border-color, box-shadow, transform))
     transition-property: $properties
     transition-duration: $dur-fast
     transition-timing-function: ease-out
 
+// Использовать внутри &:focus-visible у кнопок, ссылок и полей ввода.
+// Не применять к обычному :focus, чтобы рамка не появлялась после клика мышью.
 @mixin focus-ring
     outline: none
     box-shadow: $shadow-focus
 
+// Использовать внутри &:disabled для нативных button, input и select.
+// Миксин также отключает события мыши через pointer-events: none.
 @mixin disabled-state
     color: $color-disabled-text
     background-color: $color-disabled
@@ -15,12 +21,28 @@
     cursor: not-allowed
     pointer-events: none
 
-// Готовые цветовые схемы компонентов. Подключение одного миксина назначает
-// default, hover, focus, active и disabled без цветов в классе компонента.
+// Типографические роли из UI kit
+// Для крупных акцентных заголовков и названия бренда; вес можно передать аргументом.
+// Пример: @include font-display(600).
+@mixin font-display($weight: 700)
+    font-family: $font-display
+    font-weight: $weight
+    letter-spacing: -.02em
+
+// Для элементов интерфейса и обычного текста, когда нужно явно назначить UI-шрифт.
+// Пример: @include font-interface(500).
+@mixin font-interface($weight: 400)
+    font-family: $font-sans
+    font-weight: $weight
+
+// Готовые цветовые схемы компонентов. Они задают внешний вид и доступные
+// интерактивные состояния целиком, поэтому рядом не нужно дублировать их цвета.
+// Для главного действия формы или страницы: «Сохранить», «Добавить», «Продолжить».
 @mixin button-primary
     color: $button-primary-text
     background-color: $button-primary-bg
     border: 1px solid $button-primary-bg
+    border-radius: $button-radius
     @include transition
 
     &:hover:not(:disabled)
@@ -36,10 +58,12 @@
     &:disabled
         @include disabled-state
 
+// Для альтернативного или менее важного действия: «Отмена», «Назад», «Подробнее».
 @mixin button-secondary
     color: $button-secondary-text
     background-color: $button-secondary-bg
     border: 1px solid $color-focus
+    border-radius: $button-radius
     @include transition
 
     &:hover:not(:disabled)
@@ -53,10 +77,12 @@
     &:disabled
         @include disabled-state
 
+// Для опасного необратимого действия, например удаления или сброса данных.
 @mixin button-danger
     color: $color-text-on-primary
     background-color: $button-danger-bg
     border: 1px solid $button-danger-bg
+    border-radius: $button-radius
     @include transition
 
     &:focus-visible
@@ -65,10 +91,13 @@
     &:disabled
         @include disabled-state
 
+// Для интерактивных полей формы: input, textarea и select.
+// Не использовать для обычных контейнеров: миксин добавляет placeholder и состояния поля.
 @mixin control-surface
     color: $control-text
     background-color: $control-bg
     border: 1px solid $control-border
+    border-radius: $control-radius
     @include transition((border-color, box-shadow, background-color))
 
     &::placeholder
@@ -84,11 +113,14 @@
     &:disabled
         @include disabled-state
 
+// Для статичной поверхности карточки или панели без hover/focus-состояний.
 @mixin card-surface
     color: $color-text
     background-color: $card-bg
     border: 1px solid $card-border
+    border-radius: $card-radius
 
+// Для кликабельного текста и ссылок, которым нужны hover и клавиатурный focus.
 @mixin interactive-text
     color: $link-text
     @include transition(color)
@@ -99,50 +131,53 @@
     &:focus-visible
         @include focus-ring
 
+// Для нейтрального или основного тега/бейджа без интерактивных состояний.
 @mixin tag-primary
     color: $tag-text
     background-color: $tag-bg
     border: 1px solid $color-focus
+    border-radius: $tag-radius
 
+// Для тега/бейджа, который сообщает об успешном или завершённом статусе.
 @mixin tag-success
     color: $tag-success-text
     background-color: $tag-success-bg
     border: 1px solid rgba($color-success, .35)
+    border-radius: $tag-radius
 
-// Старые имена оставлены для совместимости; цвета берутся из семантики выше.
-@mixin orangeTextHover
+// Частичные состояния для существующих компонентов.
+// Эти миксины сами не создают &:hover — подключать их внутри нужного селектора.
+@mixin link-hover-state
     color: $link-text-hover
     @include transition(color)
 
-@mixin orangeBgHover
+@mixin button-primary-hover-state
     background-color: $button-primary-bg-hover
     @include transition(background-color)
 
-@mixin greenTextHover
-    color: $link-text-hover
-    @include transition(color)
-
-@mixin greenBorderHover
+@mixin control-border-hover-state
     border-color: $control-border-hover
     @include transition(border-color)
 
-@mixin greenBgHover
-    background-color: $button-primary-bg-hover
-    @include transition(background-color)
-
-// Breakpoints
+// Breakpoints построены по принципу max-width (desktop-first).
+// Подключать внутри селектора и располагать от большего breakpoint к меньшему,
+// если правила пересекаются: @include lg, затем @include md, @include sm, @include xs.
+// Очень узкие телефоны: ширина viewport до 374px включительно.
 @mixin xs
-    @media (max-width: 374px)
+    @media (min-width: 375px)
         @content
 
+// Телефоны и небольшие планшеты: ширина viewport до 767px включительно.
 @mixin sm
-    @media (max-width: 767px)
+    @media (min-width: 768px)
         @content
 
+// Планшеты и небольшие ноутбуки: ширина viewport до 991px включительно.
 @mixin md
-    @media (max-width: 991px)
+    @media (min-width: 992px)
         @content
 
+// Экраны меньше desktop: ширина viewport до 1199px включительно.
 @mixin lg
-    @media (max-width: 1199px)
+    @media (min-width: 1200px)
         @content

@@ -6,7 +6,7 @@
     color: $base-white
     border: none
     height: 40px
-    border-radius: 12px
+    border-radius: $button-radius
     padding: 12px
     width: fit-content
     cursor: pointer
@@ -15,4 +15,13 @@
     display: flex
     align-items: center
     &:hover
-        @include orangeBgHover
+        @include button-primary-hover-state
+
+.iconButton
+    background: transparent
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 44px
+    height: 44px
+    border: 1px solid transparent

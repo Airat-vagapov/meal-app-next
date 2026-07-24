@@ -3,6 +3,12 @@
 @import '/src/styles/mixins.sass'
 
 :root
+    --font-interface: var(--font-onest)
+    --font-editorial: var(--font-literata)
+    --radius-control: #{$radius-control}
+    --radius-media: #{$radius-media}
+    --radius-overlay: #{$radius-overlay}
+    --radius-pill: #{$radius-pill}
     --color-canvas: #{$color-canvas}
     --color-surface: #{$color-surface}
     --color-ink: #{$color-text}
@@ -31,14 +37,25 @@ html
 body
     color: $color-text
     background-color: $color-canvas
-    font-family: var(--font-mulish)
+    font-family: $font-sans
     font-size: $fs-body
     font-weight: 400
     line-height: 22px
-    letter-spacing: -0.02em
+    letter-spacing: 0
     height: 100%
     position: relative
     display: block
+    padding-top: 72px
+
+h1,
+h2
+    font-family: $font-display
+
+button,
+input,
+select,
+textarea
+    font: inherit
 
 input
     outline: none
@@ -54,7 +71,7 @@ a
         cursor: pointer
         @include transition
         &:hover
-            @include greenTextHover
+            @include link-hover-state
         &.disabled
             cursor: none
             pointer-events: none
@@ -63,10 +80,37 @@ a
     p
         @include transition
     p:hover
-        @include orangeTextHover
+        @include link-hover-state
 
 div.link
     cursor: pointer
     @include transition
     &:hover
-        @include orangeTextHover
+        @include link-hover-state
+
+.hidden
+    display: none !important
+    @include transition
+
+.showMobile[class]
+    display: flex
+    @include sm
+        display: none
+
+.showTablet[class]
+    display: none
+    @include sm
+        display: none
+    @include md
+        display: flex
+    @include lg
+        display: none
+
+.showDesktop[class]
+    display: none
+    @include sm
+        display: none
+    @include md
+        display: none
+    @include lg
+        display: flex
