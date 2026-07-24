@@ -6,13 +6,16 @@ import HeaderActions from "./HeaderActions/HeaderActions";
 
 const Header = () => {
     return (
-        <header className={styles.headerDivider}>
-            <Container>
-                <div className={styles.header}>
-                    <Logo />
-                    <HeaderActions />
-                </div>
-            </Container>
+        <header className={styles.header}>
+            <div className={styles.header}>
+                <Container>
+                    <div className={styles.headerInner}>
+                        <Logo />
+                        <HeaderActions />
+                    </div>
+                </Container>
+            </div>
+            {/* </div> */}
         </header>
     );
 };

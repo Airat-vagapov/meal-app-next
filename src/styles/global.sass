@@ -45,6 +45,7 @@ body
     height: 100%
     position: relative
     display: block
+    padding-top: 72px
 
 h1,
 h2
@@ -90,3 +91,26 @@ div.link
 .hidden
     display: none !important
     @include transition
+
+.showMobile[class]
+    display: flex
+    @include sm
+        display: none
+
+.showTablet[class]
+    display: none
+    @include sm
+        display: none
+    @include md
+        display: flex
+    @include lg
+        display: none
+
+.showDesktop[class]
+    display: none
+    @include sm
+        display: none
+    @include md
+        display: none
+    @include lg
+        display: flex

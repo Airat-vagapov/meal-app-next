@@ -10,6 +10,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const Button: React.FC<ButtonProps> = ({
+    className,
     btnStyle,
     type,
     children,
@@ -26,9 +27,9 @@ const Button: React.FC<ButtonProps> = ({
                 <button
                     {...buttonProps}
                     type={type}
-                    className={
-                        btnStyle === "icon" ? styles.iconButton : styles.button
-                    }
+                    className={`
+                        ${btnStyle === "icon" ? styles.iconButton : styles.button} 
+                        ${className || ""}`}
                 >
                     {btnStyle === "icon" && <Icon name="menu" />}
                     {children}

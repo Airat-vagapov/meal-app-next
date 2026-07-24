@@ -1,20 +1,29 @@
-@import '/src/styles/vars.sass'
-@import '/src/styles/mixins.sass'
+// @import '/src/styles/vars.sass'
+// @import '/src/styles/mixins.sass'
 
 .header
     width: 100%
     padding: 12px 0
-    display: flex
-    justify-content: space-between
-    align-items: center
+    height: 72px
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 20
+
+    &Inner
+        display: flex
+        align-items: center
 
     &Divider
         border-bottom: 1px solid $color-border
+        width: 100%
 
     &Actions
         display: flex
         align-items: center
-        gap: $s-4
+        gap: $s-2
+        width: 100%
+        justify-content: flex-end
 
     &Menu
         margin: 0 auto
@@ -30,7 +39,7 @@
 
         &.desktopHeaderMenu
             display: none
-            @include lg
+            @include sm
                 display: flex
 
     &Control
@@ -65,16 +74,32 @@
 
 .burgerMenu
     position: fixed
-    opacity: 0
-    visibility: hidden
     pointer-events: none
-    top: 72px
+    top: 73px
     left: 0
     z-index: 10
+    width: 100%
+    background-color: $color-canvas
+    box-shadow: none
+    clip-path: inset(0 0 100% 0)
+    transform: translateY(-$s-3)
+    @include transition((opacity, clip-path, transform, box-shadow))
     &Open
-        opacity: 1
-        visibility: visible
         pointer-events: auto
+        box-shadow: $shadow-3
+        clip-path: inset(0)
+        transform: translateY(0)
     &List
-        dipslay: flex
+        display: flex
         flex-direction: column
+    &Item
+        border-bottom: 1px solid $color-border
+        min-height: 52px
+        display: flex
+        align-items: center
+        font-size: $fs-sm
+        font-weight: 600
+        color: $color-text-muted
+        @include transition((color))
+        &:hover
+            color: $color-text

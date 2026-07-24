@@ -21,7 +21,7 @@ const HeaderActions = () => {
         },
         {
             name: "Подборки",
-            link: "/meals",
+            link: "/meals/all",
         },
     ];
     return (
