@@ -6,6 +6,7 @@ import Link from "next/link";
 import Button from "@/ui/Button/Button";
 import { useEffect, useRef, useState } from "react";
 import Container from "@/components/Container/Container";
+import { usePathname } from "next/navigation";
 
 interface HeaderMenuProps {
     menuData: HeaderMenuData[];
@@ -14,16 +15,15 @@ interface HeaderMenuProps {
 const HeaderMenu: React.FC<HeaderMenuProps> = ({ menuData }) => {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
 
-    const burgerMenuRef = useRef<HTMLElement>(null);
+    const burgerMenuRef = useRef<HTMLDivElement>(null);
+
+    const pathnmame = usePathname();
 
     useEffect(() => {
         const handleClickOutside = (event: PointerEvent) => {
             const target = event.target as Node;
-            console.log("target", target);
 
             const clickedInsideMenu = burgerMenuRef.current?.contains(target);
-            
-            console.log("clickedInsideMenu", clickedInsideMenu);
 
             if (!clickedInsideMenu) {
                 setBurgerIsOpen(false);
@@ -43,7 +43,14 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ menuData }) => {
         <>
             <div className={`${styles.headerMenu} ${styles.desktopHeaderMenu}`}>
                 {menuData.map((item) => (
-                    <Link key={item.link} href={item.link}>
+                    <Link
+                        className={`
+                            ${styles.headerMenuElem}
+                            ${pathnmame === item.link ? `${styles.headerMenuElemActive}` : ""}
+                            `}
+                        key={item.link}
+                        href={item.link}
+                    >
                         {item.name}
                     </Link>
                 ))}

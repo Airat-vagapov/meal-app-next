@@ -29,13 +29,19 @@
         margin: 0 auto
         display: flex
         gap: $s-6
-        a
+        &Elem
+            display: flex
+            align-items: center
             font-size: $fs-sm
             font-weight: 600
             color: $color-text-muted
+            height: 44px
             @include transition
             &:hover
                 @include link-hover-state
+            &Active
+                color: $color-text
+                border-bottom: 2px solid $color-text
 
         &.desktopHeaderMenu
             display: none
